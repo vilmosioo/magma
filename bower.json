@@ -2,6 +2,6 @@
   "name": "Magma",
   "private": true,
   "dependencies": {
-    "angular": "~1.3.8"
+    "lumx": "~0.2.48"
   }
 }
