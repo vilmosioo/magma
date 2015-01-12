@@ -12,10 +12,12 @@ module.exports = function (grunt) {
 		pck: pck,
 		clean: require('./grunt/clean'),
 		copy: require('./grunt/copy'),
-		htmlmin: require('./grunt/htmlmin'),
 		express: require('./grunt/express'),
 		watch: require('./grunt/watch'),
-		open: require('./grunt/open')
+		open: require('./grunt/open'),
+		useminPrepare: require('./grunt/useminPrepare'),
+		usemin: require('./grunt/usemin'),
+		filerev: require('./grunt/filerev')
 	});
 
 	grunt.registerTask('server', [
@@ -27,8 +29,12 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', [
 		'clean:dist',
+		'useminPrepare',
+		'concat',
+		'uglify',
+		'filerev',
 		'copy',
-		'htmlmin'
+		'usemin'
 	]);
 
 	grunt.registerTask('dist', [

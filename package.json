@@ -40,7 +40,12 @@
     "grunt-contrib-htmlmin": "^0.3.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-clean": "^0.6.0",
-    "grunt-open": "^0.2.3"
+    "grunt-open": "^0.2.3",
+    "grunt-usemin": "^3.0.0",
+    "grunt-filerev": "^2.1.2",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.11.0"
   },
   "bundleDependencies": [],
   "private": true,

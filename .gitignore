@@ -2,3 +2,4 @@ node_modules
 dist
 .idea
 app/components
+.tmp

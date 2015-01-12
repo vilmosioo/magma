@@ -1,11 +1,11 @@
 'use stricts';
 
 module.exports = {
-	build: {
+	html: {
 		files: [{
 			expand: true,
 			cwd: '<%= pck.config.app %>',
-			src: ['*.html'],
+			src: ['**/*.html'],
 			dest: '<%= pck.config.dist %>'
 		}]
 	}
