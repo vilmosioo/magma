@@ -14,12 +14,14 @@ module.exports = function (grunt) {
 		copy: require('./grunt/copy'),
 		htmlmin: require('./grunt/htmlmin'),
 		express: require('./grunt/express'),
-		watch: require('./grunt/watch')
+		watch: require('./grunt/watch'),
+		open: require('./grunt/open')
 	});
 
 	grunt.registerTask('server', [
 		'clean:server',
 		'express:server',
+		'open',
 		'watch'
 	]);
 
