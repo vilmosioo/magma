@@ -8,7 +8,7 @@
     "url": "vilmosioo.co.uk"
   },
   "scripts": {
-    "build": "grunt",
+    "build": "sh ci/build.sh",
     "before_deploy": "sh ci/before_deploy.sh"
   },
   "config": {
