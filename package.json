@@ -7,6 +7,10 @@
     "name": "Vilmos Ioo",
     "url": "vilmosioo.co.uk"
   },
+  "scripts": {
+    "build": "grunt",
+    "before_deploy": "sh ci/before_deploy.sh"
+  },
   "config": {
     "app": "app",
     "dist": "dist",

@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- '0.10'
+before_script:
+- npm install -g grunt-cli bower
+- npm install
+script:
+- npm run build
+branches:
+  only:
+  - master
+before_deploy:
+- npm run before_deploy
+deploy:
+  provider: openshift
+  user: cool.villi@gmail.com
+  password:
+    secure: R7xHX/PC/is4ihGdFFo/kXGEi7A9e5rAZN5byZjTVFIxgzqCtn2H9E/ocfANRkO3LKPyg4zCT9safK9JudTucHkwQwycmkEXR6em4BBWG3zpWDks8dUNk9es4RDCobEP3WyZ3OZH3eyOiG/+3H4lbOQ9ECHDUiTUaammtVOHAps=
+  app: magma
+  domain: vilmosioo
+  on:
+    repo: vilmosioo/magma
+    branch: master
