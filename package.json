@@ -1,6 +1,6 @@
 {
   "name": "Magma",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A new way of building isomorphic app.",
   "keywords": [],
   "author": {
@@ -15,7 +15,7 @@
     "app": "app",
     "dist": "dist",
     "tmp": ".tmp",
-		"port": 9000
+    "port": 9000
   },
   "homepage": "http://magma-vilmosioo.rhcloud.com/",
   "repository": {
