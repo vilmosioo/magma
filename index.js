@@ -28,6 +28,6 @@ if(process.env.NODE_ENV === 'development'){
     });
 }
 
-var server = app.listen(15000, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', function(){
+var server = app.listen(process.env.OPENSHIFT_NODEJS_PORT || 9000, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', function(){
     console.log('Server listening on ' + server.address().address + ':' + server.address().port);
 });
