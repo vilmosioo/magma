@@ -1,35 +1,33 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
-  "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
-  ],
+  "name": "Magma",
+  "version": "0.0.0",
+  "description": "A new way of building isomorphic app.",
+  "keywords": [],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Vilmos Ioo",
+    "url": "vilmosioo.co.uk"
   },
-  "homepage": "http://www.openshift.com/",
+  "config": {
+    "app": "app",
+    "dist": "dist",
+    "tmp": ".tmp"
+  },
+  "homepage": "http://magma-vilmosioo.rhcloud.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+    "url": "https://github.com/vilmosioo/magma"
   },
-
   "engines": {
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-    "express": "~3.4.4"
+    "morgan": "^1.5.1",
+    "body-parser": "^1.10.1",
+    "express": "^4.10.7"
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
-  "main": "server.js"
+  "main": "index.js"
 }
