@@ -21,3 +21,6 @@ deploy:
   on:
     repo: vilmosioo/magma
     branch: master
+env:
+  global:
+    secure: eLszokkjZWQEGgK5Fm3dWriftasGvOjlLoQyBAcNGth2IG6az7sW22w/xCqCAbks1nUvcZFMxeRFofeusUoIvum8t5xEr3bpfNAjHvdT63qQf9zxlH2S32yTgujbwb6ZBeoowH0t6EGD7AZqh5U3WfTJe8FWn9A5+DpRfL0zPvI=
