@@ -9,6 +9,13 @@ module.exports =  {
 			livereload: true
 		}
 	},
+	sass: {
+		files:  [ '<%= pck.config.app %>/**/*.scss'],
+		tasks:  [ 'sass:server' ],
+		options: {
+			livereload: true
+		}
+	},
 	livereload: {
 		options: {
 			livereload: true

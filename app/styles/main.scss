@@ -1,1 +1,32 @@
-body{color:red}
+$main_color: rgba(33, 150, 243, 1);
+
+/**
+  Override bootstrap styles
+*/
+.navbar-default{
+  border-radius: 0;
+  .navbar-nav{
+    li{
+      &.current{
+        a{
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+body{
+  background:$main_color;
+}
+
+section{
+  margin-bottom:50px;
+  .container{
+    min-height:1000px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
