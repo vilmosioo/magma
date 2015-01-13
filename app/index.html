@@ -5,8 +5,8 @@
 	  <title>Magma</title>
 
 		<!-- build:css({app,.tmp}) styles/main.css -->
-		<link rel="stylesheet" href="components/bootswatch/paper/bootstrap.css">
-		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="/components/bootswatch/paper/bootstrap.css">
+		<link rel="stylesheet" href="/styles/main.css">
 		<!-- endbuild -->
 	</head>
 	<body>
@@ -18,8 +18,8 @@
 					</div>
 					<div>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="current"><a href="/">Active</a></li>
-							<li><a href="/">Link</a></li>
+							<li class="current"><a href="/views">Views</a></li>
+							<li><a href="/directives">Directives</a></li>
 						</ul>
 					</div>
 				</div>
@@ -31,12 +31,16 @@
 		</section>
 
 		<!-- build:js scripts/vendor.js -->
-		<script src="components/angular/angular.js"></script>
-		<script src="components/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="/components/angular/angular.js"></script>
+		<script src="/components/angular-route/angular-route.js"></script>
+		<script src="/components/angular-bootstrap/ui-bootstrap.js"></script>
 		<!-- endbuild -->
 
 		<!-- build:js scripts/app.js -->
-		<script src="scripts/app.js"></script>
+		<script src="/scripts/app.js"></script>
 		<!-- endbuild -->
+
+		<!-- Placeholder, not actually used-->
+		<div ng-view></div>
 	</body>
 </html>

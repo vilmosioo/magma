@@ -1,9 +1,27 @@
 'use strict';
 
-angular.module('Magma', ['ui.bootstrap'])
-	.config(function($locationProvider){
-		$locationProvider.html5Mode(true);
-	})
-	.run(function(){
-		console.log('Application bootstrap.');
+angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
+	.config(function($locationProvider, $routeProvider){
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false
+		});
+
+		// template-less routing to avoid using ng-view and its default behaviour
+		$routeProvider
+			.when('/', {
+				template: ' ',
+				controller: function(){
+					console.log('Main');
+				}
+			})
+			.when('/views', {
+				template: ' ',
+				controller: function(){
+					console.log('Views');
+				}
+			})
+			.otherwise({
+				redirectTo: '/'
+			});
 	});
