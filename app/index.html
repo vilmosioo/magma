@@ -27,7 +27,9 @@
 		</header>
 
 		<section>
-			<div class="container"></div>
+			<div class="container" mg-view>
+				Transcluded content
+			</div>
 		</section>
 
 		<!-- build:js scripts/vendor.js -->
@@ -38,9 +40,7 @@
 
 		<!-- build:js scripts/app.js -->
 		<script src="/scripts/app.js"></script>
+		<script src="/scripts/directives/mgView_directive.js"></script>
 		<!-- endbuild -->
-
-		<!-- Placeholder, not actually used-->
-		<div ng-view></div>
 	</body>
 </html>
