@@ -3,7 +3,7 @@
 angular.module('Magma')
 	.directive('mgView', function(){
 		return {
-			template: '<div ng-transclude ng-if="!flags.routing"></div><div ng-if="flags.routing" ng-view></div>',
+			template: '<div ng-switch="flags.routing"><div ng-switch-when="false" ng-transclude></div><div ng-switch-default><div ng-view></div></div></div>',
 			scope: {},
 			transclude: true,
 			controller: function($scope){
