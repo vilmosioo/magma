@@ -3,6 +3,7 @@ node_js:
 - '0.10'
 before_script:
 - npm install -g grunt-cli bower
+- gem install sass
 - npm install && bower install
 script:
 - npm run build

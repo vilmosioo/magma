@@ -16,7 +16,8 @@ app.use(bodyParser.json());
 if(process.env.NODE_ENV === 'development'){
     app.use(require('connect-livereload')());
     app.use(express.static(path.join(__dirname, pck.config.app)));
-    app.use(express.static(path.join(__dirname, pck.config.tmp)));
+		app.use(express.static(path.join(__dirname, pck.config.tmp)));
+		app.use(express.static(__dirname)); // this is only required for sourcemaps
     app.use(function(req, res){
         res.sendFile(path.join(__dirname, pck.config.app) + '/index.html');
     });

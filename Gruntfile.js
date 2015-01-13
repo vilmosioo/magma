@@ -17,11 +17,13 @@ module.exports = function (grunt) {
 		open: require('./grunt/open'),
 		useminPrepare: require('./grunt/useminPrepare'),
 		usemin: require('./grunt/usemin'),
-		filerev: require('./grunt/filerev')
+		filerev: require('./grunt/filerev'),
+		sass: require('./grunt/sass')
 	});
 
 	grunt.registerTask('server', [
 		'clean:server',
+		'sass:server',
 		'express:server',
 		'open',
 		'watch'
@@ -29,9 +31,11 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', [
 		'clean:dist',
+		'sass:dist',
 		'useminPrepare',
 		'concat',
 		'uglify',
+		'cssmin',
 		'filerev',
 		'copy',
 		'usemin'
