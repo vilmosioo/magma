@@ -16,6 +16,10 @@ module.exports =  {
 			livereload: true
 		}
 	},
+	js: {
+		files:  [ '<%= jshint.all %>'],
+		tasks:  [ 'jshint' ]
+	},
 	livereload: {
 		options: {
 			livereload: true
