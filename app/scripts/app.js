@@ -10,13 +10,13 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 		// template-less routing to avoid using ng-view and its default behaviour
 		$routeProvider
 			.when('/', {
-				template: 'Main',
+				templateUrl: '/views/home.html',
 				controller: function(){
 					console.log('Main');
 				}
 			})
 			.when('/views', {
-				template: 'Views',
+				templateUrl: '/views/views.html',
 				controller: function(){
 					console.log('Views');
 				}

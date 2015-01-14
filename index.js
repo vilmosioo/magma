@@ -18,7 +18,6 @@ var app = express(),
 app.set('views', path.join(__dirname, dir + '/views'));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.enable('view cache');
 app.use(logger('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -28,16 +27,20 @@ if(process.env.NODE_ENV === 'development'){
     app.use(express.static(path.join(__dirname, pck.config.app)));
 		app.use(express.static(path.join(__dirname, pck.config.tmp)));
 		app.use(express.static(__dirname)); // this is only required for sourcemaps
-		app.get('/:path?', function(req, res){
-			res.render(req.params.path || 'home');
-		});
 } else {
     // express will not actually serve any static files, this is just a fallback, nginx will take care of this
     app.use(express.static(path.join(__dirname, pck.config.dist)));
-		app.get('/:path?', function(req, res){
-			res.render(req.params.path || 'home');
-		});
 }
+
+// parse all html files from their handlebar templates
+app.get('/views/:filename.html', function(req, res){
+	res.render(req.params.filename, {layout: false});
+});
+
+// always return index.html
+app.get('/:path?', function(req, res){
+	res.render(req.params.path || 'home');
+});
 
 var server = app.listen(process.env.OPENSHIFT_NODEJS_PORT || pck.config.port, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', function(){
     console.log('Server listening on ' + server.address().address + ':' + server.address().port);
