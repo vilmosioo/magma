@@ -1,0 +1,8 @@
+{
+	"/": {
+		"templateUrl": "/views/home.html"
+	},
+	"/views": {
+		"templateUrl": "/views/views.html"
+	}
+}

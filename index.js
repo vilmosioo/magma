@@ -6,6 +6,7 @@ var express = require('express'),
     path = require('path'),
 		exphbs  = require('express-handlebars'),
     pck = require('./package.json'),
+		routes = require('./models/routes'),
 		dir = process.env.NODE_ENV === 'development' ? pck.config.app : pck.config.dist;
 
 var app = express(),
@@ -39,7 +40,15 @@ app.get('/views/:filename.html', function(req, res){
 
 // always return index.html
 app.get('/:path?', function(req, res){
-	res.render(req.params.path || 'home');
+	console.log(req.params.path);
+	var template = routes['/' + req.params.path] || routes['/'];
+	template = template.templateUrl;
+
+	res.render(path.basename(template, path.extname(template)), {
+		constants: {
+			ROUTES: JSON.stringify(routes)
+		}
+	});
 });
 
 var server = app.listen(process.env.OPENSHIFT_NODEJS_PORT || pck.config.port, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', function(){
