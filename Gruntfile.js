@@ -19,8 +19,13 @@ module.exports = function (grunt) {
 		usemin: require('./grunt/usemin'),
 		filerev: require('./grunt/filerev'),
 		sass: require('./grunt/sass'),
-		ngAnnotate: require('./grunt/ngAnnotate')
+		ngAnnotate: require('./grunt/ngAnnotate'),
+		jshint: require('./grunt/jshint')
 	});
+
+	grunt.registerTask('test', [
+		'jshint'
+	]);
 
 	grunt.registerTask('server', [
 		'clean:server',
@@ -44,6 +49,7 @@ module.exports = function (grunt) {
 	]);
 
 	grunt.registerTask('dist', [
+		'test',
 		'build',
 		'express:dist'
 	]);
