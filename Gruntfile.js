@@ -18,7 +18,8 @@ module.exports = function (grunt) {
 		useminPrepare: require('./grunt/useminPrepare'),
 		usemin: require('./grunt/usemin'),
 		filerev: require('./grunt/filerev'),
-		sass: require('./grunt/sass')
+		sass: require('./grunt/sass'),
+		ngAnnotate: require('./grunt/ngAnnotate')
 	});
 
 	grunt.registerTask('server', [
@@ -34,6 +35,7 @@ module.exports = function (grunt) {
 		'sass:dist',
 		'useminPrepare',
 		'concat',
+		'ngAnnotate',
 		'uglify',
 		'cssmin',
 		'filerev',
