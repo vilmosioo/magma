@@ -40,7 +40,6 @@ app.get('/views/:filename.html', function(req, res){
 
 // always return index.html
 app.get('/:path?', function(req, res){
-	console.log(req.params.path);
 	var template = routes['/' + req.params.path] || routes['/'];
 	template = template.templateUrl;
 
