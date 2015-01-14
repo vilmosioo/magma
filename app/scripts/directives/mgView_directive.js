@@ -25,5 +25,5 @@ angular.module('Magma')
 					}
 				}));
 			}
-		}
+		};
 	});

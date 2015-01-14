@@ -6,8 +6,7 @@ var express = require('express'),
     path = require('path'),
     pck = require('./package.json');
 
-var app = express(),
-    router = express.Router();
+var app = express();
 
 app.use(logger('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
