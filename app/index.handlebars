@@ -1,8 +1,10 @@
 <!doctype html>
 <html ng-app="Magma">
 	<head>
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <title>Magma</title>
+	  <title mg-bind="app.title">{{app.title}}</title>
+		<meta name="description" ng-attr-content="\{{app.description}}" content="{{app.description}}">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<base href="/">
 
 		<!-- build:css({app,.tmp}) styles/main.css -->
@@ -41,6 +43,7 @@
 		<!-- build:js scripts/app.js -->
 		<script src="/scripts/app.js"></script>
 		<script src="/scripts/directives/mgView_directive.js"></script>
+		<script src="/scripts/directives/mgBind_directive.js"></script>
 		<!-- endbuild -->
 
 		<script>

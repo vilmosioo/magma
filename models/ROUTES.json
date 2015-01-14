@@ -1,8 +1,12 @@
 {
 	"/": {
-		"templateUrl": "/views/home.html"
+		"templateUrl": "/views/home.html",
+		"title": "Magma",
+		"description": "A new way of building isomorphic apps."
 	},
 	"/views": {
-		"templateUrl": "/views/views.html"
+		"templateUrl": "/views/views.html",
+		"title": "Views | Magma",
+		"description": "How to use views in Magma."
 	}
 }

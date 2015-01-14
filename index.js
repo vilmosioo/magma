@@ -40,12 +40,16 @@ app.get('/views/:filename.html', function(req, res){
 
 // always return index.html
 app.get('/:path?', function(req, res){
-	var template = routes['/' + req.params.path] || routes['/'];
-	template = template.templateUrl;
+	var route = routes['/' + req.params.path] || routes['/'],
+		template = route.templateUrl;
 
 	res.render(path.basename(template, path.extname(template)), {
 		constants: {
 			ROUTES: JSON.stringify(routes)
+		},
+		app: {
+			title: route.title,
+			description: route.description
 		}
 	});
 });

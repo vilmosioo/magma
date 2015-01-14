@@ -24,6 +24,11 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 			routing: false
 		};
 
+		$rootScope.app = {
+			title: '',
+			description: ''
+		};
+
 		var unbind = $rootScope.$on('$locationChangeStart', function(ev, newState, oldState){
 			if(newState.charAt(newState.length - 1) === '/'){
 				newState = newState.slice(0, newState.length - 1);
@@ -37,5 +42,10 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 				$rootScope.global.routing = true;
 				unbind();
 			}
+		});
+
+		$rootScope.$on('$routeChangeStart', function(ev, currRoute){
+			$rootScope.app.title = currRoute.$$route.title || '';
+			$rootScope.app.description = currRoute.$$route.description || '';
 		});
 	});
