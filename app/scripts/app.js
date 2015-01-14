@@ -33,9 +33,7 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 				oldState = oldState.slice(0, oldState.length - 1);
 			}
 
-			console.log(newState, oldState);
 			if(newState !== oldState){
-				console.log('done');
 				$rootScope.global.routing = true;
 				unbind();
 			}
