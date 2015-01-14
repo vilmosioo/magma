@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	html: '<%= pck.config.app %>/index.html',
+	html: '<%= pck.config.app %>/index.handlebars',
 	options: {
 		dest: '<%= pck.config.dist %>'
 	}

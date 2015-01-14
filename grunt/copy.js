@@ -1,11 +1,11 @@
 'use stricts';
 
 module.exports = {
-	html: {
+	all: {
 		files: [{
 			expand: true,
 			cwd: '<%= pck.config.app %>',
-			src: ['**/*.html'],
+			src: ['**/*.{handlebars,ico,html}'],
 			dest: '<%= pck.config.dist %>'
 		}]
 	}
