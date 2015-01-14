@@ -33,15 +33,34 @@ if(process.env.NODE_ENV === 'development'){
     app.use(express.static(path.join(__dirname, pck.config.dist)));
 }
 
+app.use(function(req, res, next){
+
+	var id = Object.keys(routes).filter(function(path){
+		return routes[path].templateUrl === req.path;
+	}) || '/';
+
+	req.data = {
+		route: routes[path.normalize(req.path)] || routes[id] // this is either a route identified by the request path or by the templateUrl of a route
+	};
+
+	next();
+});
+
 // parse all html files from their handlebar templates
 app.get('/views/:filename.html', function(req, res){
-	res.render(req.params.filename, {layout: false});
+	res.render(req.params.filename, {
+		layout: false,
+		view: {
+			title: req.data.route.title,
+			content: req.data.route.description
+		}
+	});
 });
 
 // always return index.html
 app.get('/:path?', function(req, res){
-	var route = routes['/' + req.params.path] || routes['/'],
-		template = route.templateUrl;
+	var template = req.data.route.templateUrl,
+		route = req.data.route;
 
 	res.render(path.basename(template, path.extname(template)), {
 		constants: {
@@ -50,6 +69,10 @@ app.get('/:path?', function(req, res){
 		app: {
 			title: route.title,
 			description: route.description
+		},
+		view: {
+			title: route.title,
+			content: route.description
 		}
 	});
 });
