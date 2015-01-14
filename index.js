@@ -15,7 +15,7 @@ var app = express(),
 		partialsDir: path.join(__dirname, dir + '/views')
 	});
 
-app.set('views', path.join(__dirname, pck.config.app + '/views'));
+app.set('views', path.join(__dirname, dir + '/views'));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.enable('view cache');
