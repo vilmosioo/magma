@@ -6,7 +6,7 @@ var express = require('express'),
     path = require('path'),
 		exphbs  = require('express-handlebars'),
     pck = require('./package.json'),
-		routes = require('./models/routes'),
+		routes = require('./models/ROUTES.json'),
 		dir = process.env.NODE_ENV === 'development' ? pck.config.app : pck.config.dist;
 
 var app = express(),
