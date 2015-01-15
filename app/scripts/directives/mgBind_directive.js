@@ -1,24 +1,20 @@
 'use strict';
 
-// based on ngBind source, but only kicks into effect after routing is enabled
 angular.module('Magma')
-	.directive('mgBind', function($compile) {
+	.directive('mgBind', function($rootScope, $compile){
 		return {
-			restrict: 'AC',
-			compile: function(templateElement) {
-				$compile.$$addBindingClass(templateElement);
-				return function link(scope, element, attr) {
-					var unbind = scope.$watch('global.routing', function(value){
-						if(value){
-							$compile.$$addBindingInfo(element, attr.mgBind);
-							element = element[0];
-							scope.$watch(attr.mgBind, function(value) {
-								element.textContent = value === undefined ? '' : value;
-							});
-							unbind();
-						}
-					});
-				};
+			restrict: 'A',
+			replace: false,
+			terminal: true,
+			priority: 1000, // We set our custom directive's priority to a high number to ensure that it will be compiled first and with terminal: true, the other directives will be skipped after this directive is compiled.
+			link: function(scope, el, attr){
+				scope.$on('$destroy', $rootScope.$watch('global.routing', function(value){
+					if(value){
+						el.attr('ng-bind', attr.mgBind);
+						el.removeAttr('mg-bind');
+						$compile(el)(scope);
+					}
+				}));
 			}
 		};
 	});
