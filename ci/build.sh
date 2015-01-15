@@ -12,7 +12,7 @@ echo 'Patching version...'
 npm version patch -m "Updating version [skip ci]" || { echo 'Version patch failed' ; exit 1; }
 
 echo 'Running build command'
-grunt || { echo 'Client build failed' ; exit 1; }
+grunt -v || { echo 'Client build failed' ; exit 1; }
 
 echo 'Pushing git data to repo...'
 git push origin master || { echo 'Git push failed.' ; exit 1; }
