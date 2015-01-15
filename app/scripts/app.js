@@ -18,8 +18,8 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 				redirectTo: '/'
 			});
 	})
-	.run(function($rootScope){
-
+	.run(function($rootScope, $http){
+		console.log($http);
 		$rootScope.global = {
 			routing: false
 		};

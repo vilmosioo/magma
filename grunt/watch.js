@@ -2,7 +2,7 @@
 
 module.exports =  {
 	express: {
-		files:  [ '<%= pck.main %>'],
+		files:  [ '<%= pck.main %>', 'models/**/*.{js,json}', 'routes/**/*.{js,json}'],
 		tasks:  [ 'express:server' ],
 		options: {
 			spawn: false, // for grunt-contrib-watch v0.5.0+, "nospawn: true" for lower versions. Without this option specified express won't be reloaded
