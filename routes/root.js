@@ -20,10 +20,12 @@ router.use(function(req, res, next){
 
 	var id = Object.keys(routes).filter(function(path){
 		return routes[path].templateUrl === req.path;
-	}) || '/';
+	}) || '/',
+		route = routes[path.normalize(req.path)] || routes[id] // this is either a route identified by the request path or by the templateUrl of a route;
 
 	req.data = {
-		route: routes[path.normalize(req.path)] || routes[id] // this is either a route identified by the request path or by the templateUrl of a route
+		route: route,
+		name: path.basename(route.templateUrl, path.extname(route.templateUrl))
 	};
 
 	// todo set route as a 404 route if it doesn't exist (but only paths, not files)
@@ -35,19 +37,16 @@ router.use(function(req, res, next){
 router.get('/views/:filename.html', function(req, res){
 	res.render(req.params.filename, {
 		layout: false,
-		view: {
-			title: req.data.route.title,
-			content: req.data.route.description
-		}
+		view: require('../models/' + req.data.name)
 	});
 });
 
 // always return index.html
 router.use(function(req, res){
-	var template = req.data.route.templateUrl,
-		route = req.data.route;
+	var route = req.data.route,
+		name = req.data.name;
 
-	res.render(path.basename(template, path.extname(template)), {
+	res.render(name, {
 		constants: {
 			ROUTES: JSON.stringify(routes)
 		},
@@ -55,11 +54,7 @@ router.use(function(req, res){
 			title: route.title,
 			description: route.description
 		},
-		view: {
-			title: route.title,
-			content: route.description,
-			books: [1, 2]
-		}
+		view: require('../models/' + name)
 	});
 });
 
