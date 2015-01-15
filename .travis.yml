@@ -14,6 +14,7 @@ before_deploy:
 - npm run before_deploy
 deploy:
   provider: openshift
+  skip_cleanup: true
   user: cool.villi@gmail.com
   password:
     secure: R7xHX/PC/is4ihGdFFo/kXGEi7A9e5rAZN5byZjTVFIxgzqCtn2H9E/ocfANRkO3LKPyg4zCT9safK9JudTucHkwQwycmkEXR6em4BBWG3zpWDks8dUNk9es4RDCobEP3WyZ3OZH3eyOiG/+3H4lbOQ9ECHDUiTUaammtVOHAps=
