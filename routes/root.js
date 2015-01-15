@@ -17,10 +17,9 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 router.use(function(req, res, next){
-
 	var id = Object.keys(routes).filter(function(path){
 		return routes[path].templateUrl === req.path;
-	}) || '/', route = routes[path.normalize(req.path)] || routes[id]; // this is either a route identified by the request path or by the templateUrl of a route;
+	}) || '/', route = routes[req.path] || routes[id]; // this is either a route identified by the request path or by the templateUrl of a route;
 
 	req.data = {
 		route: route,
