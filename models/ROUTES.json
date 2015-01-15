@@ -4,9 +4,9 @@
 		"title": "Magma",
 		"description": "A new way of building isomorphic apps."
 	},
-	"/views/": {
-		"templateUrl": "/views/views.html",
-		"title": "Views | Magma",
+	"/about/": {
+		"templateUrl": "/views/about.html",
+		"title": "About",
 		"description": "How to use views in Magma."
 	}
 }
