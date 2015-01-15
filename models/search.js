@@ -1,6 +1,6 @@
 'use strict';
 
-var route = require('./routes')['/search/'],
+var route = require('./ROUTES.json')['/search/'],
 	books = require('./books'),
 	Pr = require('bluebird');
 

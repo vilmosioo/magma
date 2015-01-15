@@ -1,6 +1,6 @@
 'use strict';
 
-var route = require('./routes')['/'],
+var route = require('./ROUTES.json')['/'],
 	Pr = require('bluebird');
 
 module.exports = function(){
