@@ -17,6 +17,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 router.use(function(req, res, next){
+
 	var id = Object.keys(routes).filter(function(path){
 		return routes[path].templateUrl === req.path;
 	}) || '/';
@@ -56,7 +57,8 @@ router.use(function(req, res){
 		},
 		view: {
 			title: route.title,
-			content: route.description
+			content: route.description,
+			books: [1, 2]
 		}
 	});
 });

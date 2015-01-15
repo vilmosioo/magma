@@ -1,8 +1,8 @@
 'use strict';
 
-var request = require('request-promise'),
+var // request = require('request-promise'),
 	//util = require('util'),
-	Promise = require('bluebird');
+	promise = require('bluebird');
 	//SEARCH = 'https://www.googleapis.com/books/v1/volumes?q=%s&filter=free-ebooks&key=' + process.env.GOOGLE_KEY;
 
 var mock = {
@@ -433,7 +433,7 @@ var mock = {
 
 module.exports = {
 	search: function(){
-		return new Promise(function(resolve){
+		return new promise(function(resolve){
 			resolve(mock);
 		});
 		//return request(util.format(SEARCH, q));
