@@ -4,11 +4,23 @@ var route = require('./routes')['/search/'],
 	books = require('./books'),
 	Pr = require('bluebird');
 
-module.exports = function(){
+module.exports = function(args){
+	var data = {
+		title: route.title,
+		books: []
+	};
+
 	return new Pr(function(resolve){
-		resolve({
-			title: route.title,
-			books: [1,2]
+		books.search(args.query.q).then(function(response){
+			data.books = response.items.map(function(item){
+				return {
+					id: item.id,
+					title: item.volumeInfo.title
+				};
+			});
+		}).finally(function(){
+			resolve(data);
 		});
+
 	});
 };

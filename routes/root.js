@@ -36,7 +36,9 @@ router.use(function(req, res, next){
 router.get('/views/:filename.html', function(req, res){
 	var view = require('../models/' + req.data.name);
 
-	view().then(function(view){
+	view({
+		query: req.query
+	}).then(function(view){
 		res.render(req.params.filename, {
 			layout: false,
 			view: view
@@ -51,7 +53,9 @@ router.use(function(req, res){
 		name = req.data.name,
 		view = require('../models/' + name);
 
-	view().then(function(view){
+	view({
+		query: req.query
+	}).then(function(view){
 		res.render(name, {
 			constants: {
 				ROUTES: JSON.stringify(routes)
