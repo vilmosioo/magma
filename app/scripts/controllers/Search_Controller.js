@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Magma')
-	.controller('Search_Controller', function($scope, $routeParams){
+	.controller('Search_Controller', function($scope, $location, $routeParams){
 
 		$scope.models = {
 			q: $routeParams.q || ''
@@ -10,7 +10,7 @@ angular.module('Magma')
 		$scope.handlers = {
 			search: function(){
 				if($scope.SearchForm.$valid){
-					console.log($scope.models.q);
+					$location.search({q: $scope.models.q}).path('/search/');
 				}
 			}
 		};
