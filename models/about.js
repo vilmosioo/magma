@@ -1,8 +1,13 @@
 'use strict';
 
-var route = require('./routes')['/about/'];
+var route = require('./routes')['/about/'],
+	Pr = require('bluebird');
 
-module.exports = {
-	title: route.title,
-	content: route.description
+module.exports = function(){
+	return new Pr(function(resolve){
+		resolve({
+			title: route.title,
+			content: route.description
+		});
+	});
 };

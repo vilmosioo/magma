@@ -20,8 +20,7 @@ router.use(function(req, res, next){
 
 	var id = Object.keys(routes).filter(function(path){
 		return routes[path].templateUrl === req.path;
-	}) || '/',
-		route = routes[path.normalize(req.path)] || routes[id] // this is either a route identified by the request path or by the templateUrl of a route;
+	}) || '/', route = routes[path.normalize(req.path)] || routes[id]; // this is either a route identified by the request path or by the templateUrl of a route;
 
 	req.data = {
 		route: route,
@@ -35,26 +34,34 @@ router.use(function(req, res, next){
 
 // parse all html files from their handlebar templates
 router.get('/views/:filename.html', function(req, res){
-	res.render(req.params.filename, {
-		layout: false,
-		view: require('../models/' + req.data.name)
+	var view = require('../models/' + req.data.name);
+
+	view().then(function(view){
+		res.render(req.params.filename, {
+			layout: false,
+			view: view
+		});
 	});
+
 });
 
 // always return index.html
 router.use(function(req, res){
 	var route = req.data.route,
-		name = req.data.name;
+		name = req.data.name,
+		view = require('../models/' + name);
 
-	res.render(name, {
-		constants: {
-			ROUTES: JSON.stringify(routes)
-		},
-		app: {
-			title: route.title,
-			description: route.description
-		},
-		view: require('../models/' + name)
+	view().then(function(view){
+		res.render(name, {
+			constants: {
+				ROUTES: JSON.stringify(routes)
+			},
+			app: {
+				title: route.title,
+				description: route.description
+			},
+			view: view
+		});
 	});
 });
 
