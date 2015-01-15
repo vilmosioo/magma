@@ -8,5 +8,10 @@
 		"templateUrl": "/views/about.html",
 		"title": "About",
 		"description": "How to use views in Magma."
+	},
+	"/search/": {
+		"templateUrl": "/views/search.html",
+		"title": "Search",
+		"description": "Search results"
 	}
 }
