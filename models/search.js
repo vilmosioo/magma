@@ -18,6 +18,8 @@ module.exports = function(args){
 					title: item.volumeInfo.title
 				};
 			});
+		}, function(err){
+			console.log(err);
 		}).finally(function(){
 			resolve(data);
 		});
