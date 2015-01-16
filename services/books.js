@@ -14,6 +14,9 @@ module.exports = {
 					return JSON.parse(response);
 				}, function(err){
 					console.log(err);
+					return {
+						items: []
+					};
 				})
 				.then(function(response){
 					return response.items.map(function(item){
