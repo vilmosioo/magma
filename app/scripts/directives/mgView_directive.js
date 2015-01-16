@@ -2,7 +2,6 @@
 
 angular.module('Magma')
 	.directive('mgView', function($rootScope, $compile){
-		console.log('mgView');
 		return {
 			restrict: 'A',
 			replace: false,

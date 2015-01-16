@@ -2,8 +2,6 @@
 
 angular.module('Magma')
 	.directive('mgBind', function($rootScope, $compile){
-		console.log('mgBind');
-
 		return {
 			restrict: 'A',
 			replace: false,

@@ -2,8 +2,6 @@
 
 angular.module('Magma')
 	.controller('Search_Controller', function($scope, $location, $routeParams){
-		console.log('Search_Controller');
-
 		$scope.models = {
 			q: $routeParams.q || ''
 		};

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-mv -i app/scripts/controllers/Search_controller.js dist
 git rm -r app
 git rm -r grunt
 git rm -r ci

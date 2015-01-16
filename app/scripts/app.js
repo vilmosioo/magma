@@ -19,7 +19,6 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 			});
 	})
 	.run(function($route, $rootScope){
-		console.log('Application bootstrap');
 		$rootScope.global = {
 			routing: false
 		};
