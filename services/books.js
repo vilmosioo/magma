@@ -23,8 +23,8 @@ module.exports = {
 						return {
 							title: item.volumeInfo.title,
 							subtitle: item.volumeInfo.subtitle,
-							image: item.volumeInfo.imageLinks.thumbnail,
-							snippet: item.searchInfo.textSnippet
+							image: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : '',
+							snippet: item.searchInfo ? item.searchInfo.textSnippet : ''
 						}
 					})
 				});
