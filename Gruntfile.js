@@ -23,6 +23,15 @@ module.exports = function (grunt) {
 		jshint: require('./grunt/jshint')
 	});
 
+	grunt.registerTask('log', function(){
+		grunt.log.writeln(' => .tmp/concat/scripts/app.js');
+		grunt.log.writeln(' ======================== ');
+		if(grunt.file.isFile('.tmp/concat/scripts/app.js')){
+			grunt.log.writeln(grunt.file.read('.tmp/concat/scripts/app.js'));
+		}
+		grunt.log.writeln(' ======================== ');
+	});
+
 	grunt.registerTask('test', [
 		'jshint'
 	]);
@@ -38,14 +47,20 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'clean:dist',
 		'sass:dist',
+		'log',
 		'useminPrepare',
+		'log',
 		'concat',
+		'log',
 		'ngAnnotate',
+		'log',
 		'uglify',
+		'log',
 		'cssmin',
 		'filerev',
 		'copy',
-		'usemin'
+		'usemin',
+		'log'
 	]);
 
 	grunt.registerTask('dist', [
