@@ -9,12 +9,12 @@ module.exports = function(args){
 	var data = {
 		title: route.title,
 		books: []
+	}, param = {
+		q: (args.query || {}).q
 	};
 
 	return new Pr(function(resolve){
-		books({
-			q: args.query.q
-		}).then(function(view){
+		books(param).then(function(view){
 			data.books = view.books;
 		}).finally(function(){
 			resolve(data);

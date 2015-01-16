@@ -21,7 +21,7 @@ router.get('/views/:path?/:filename.html', function(req, res){
 	}
 
 	view({
-		query: req.query
+		q: req.query.q
 	}).then(function(view){
 			res.render(template, {
 				layout: false,
