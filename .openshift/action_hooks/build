@@ -1,2 +1,0 @@
-echo 'Setting google API key'
-export GOOGLE_KEY=$GOOGLE_KEY
