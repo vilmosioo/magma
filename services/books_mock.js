@@ -433,7 +433,10 @@ module.exports = {
 		return new promise(function(resolve){
 			resolve(mock.items.map(function(item){
 				return {
-					title: item.volumeInfo.title
+					title: item.volumeInfo.title,
+					subtitle: item.volumeInfo.subtitle,
+					image: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : '',
+					snippet: item.searchInfo ? item.searchInfo.textSnippet : ''
 				}
 			}));
 		});

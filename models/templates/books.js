@@ -1,7 +1,7 @@
 'use strict';
 
 var Pr = require('bluebird'),
-	books = require('../../services/books'),
+	books = require('../../services/books_mock'),
 	querystring = require('querystring');
 
 // @param type [search, list]

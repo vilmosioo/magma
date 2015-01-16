@@ -18,7 +18,10 @@ module.exports = {
 				.then(function(response){
 					return response.items.map(function(item){
 						return {
-							title: item.volumeInfo.title
+							title: item.volumeInfo.title,
+							subtitle: item.volumeInfo.subtitle,
+							image: item.volumeInfo.imageLinks.thumbnail,
+							snippet: item.searchInfo.textSnippet
 						}
 					})
 				});
