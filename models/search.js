@@ -1,7 +1,7 @@
 'use strict';
 
 var route = require('./ROUTES.json')['/search/'],
-	books = require('./books'),
+	books = require('./books_mock'),
 	Pr = require('bluebird');
 
 module.exports = function(args){
