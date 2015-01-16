@@ -12,6 +12,8 @@ module.exports = {
 			return request(util.format(SEARCH, q))
 				.then(function(response){
 					return JSON.parse(response);
+				}, function(err){
+					console.log(err);
 				})
 				.then(function(response){
 					return response.items.map(function(item){
