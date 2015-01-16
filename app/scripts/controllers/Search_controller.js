@@ -1,16 +1,12 @@
 'use strict';
 
 angular.module('Magma')
-	.controller('Search_Controller', function($scope, $location, $routeParams){
-		$scope.models = {
-			q: $routeParams.q || ''
+	.controller('Search_controller', function($scope, $routeParams){
+		$scope.search = {
+			term: $routeParams.q || ''
 		};
 
-		$scope.handlers = {
-			search: function(){
-				if($scope.SearchForm.$valid){
-					$location.search({q: $scope.models.q}).path('/search/');
-				}
-			}
+		$scope.templates = {
+			books: '/views/templates/books.html?q=' + $scope.search.term
 		};
 	});

@@ -19,7 +19,7 @@
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/">Magma</a>
 					</div>
-					<form class="navbar-form navbar-left" action="/search/" method="get" mg-submit="handlers.search()" ng-controller="Search_Controller" name="SearchForm">
+					<form class="navbar-form navbar-left" action="/search/" method="get" mg-submit="handlers.search()" ng-controller="Header_controller" name="SearchForm">
 						<input name="q" ng-model="models.q" type="text" class="form-control col-lg-8" placeholder="Search" required>
 					</form>
 					<div>
@@ -48,6 +48,7 @@
 		<!-- build:js scripts/app.js -->
 		<script src="/scripts/app.js"></script>
 		<script src="/scripts/controllers/Search_controller.js"></script>
+		<script src="/scripts/controllers/Header_controller.js"></script>
 		<script src="/scripts/directives/mgView_directive.js"></script>
 		<script src="/scripts/directives/mgBind_directive.js"></script>
 		<script src="/scripts/directives/mgInclude_directive.js"></script>

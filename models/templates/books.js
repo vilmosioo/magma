@@ -13,6 +13,10 @@ module.exports = function(args){
 			query: {
 				q: querystring.escape(args.q)
 			}
-		}).then(resolve, reject);
+		}).then(function(books){
+				resolve({
+					books: books
+				})
+			}, reject);
 	});
 };
