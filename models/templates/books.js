@@ -16,7 +16,7 @@ module.exports = function(args){
 		}).then(function(books){
 				resolve({
 					books: books
-				})
+				});
 			}, reject);
 	});
 };
