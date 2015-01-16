@@ -2,6 +2,8 @@
 
 angular.module('Magma')
 	.directive('mgSubmit', function($compile){
+		console.log('mgSubmit');
+
 		return {
 			restrict: 'A',
 			replace: false,
