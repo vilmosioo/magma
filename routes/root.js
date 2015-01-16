@@ -29,7 +29,6 @@ router.use(function(req, res){
 	view({
 		query: req.query
 	}).then(function(view){
-			console.log(view);
 		res.render(name, {
 			constants: {
 				ROUTES: JSON.stringify(routes)
