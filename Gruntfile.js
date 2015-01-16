@@ -23,11 +23,13 @@ module.exports = function (grunt) {
 		jshint: require('./grunt/jshint')
 	});
 
-	grunt.log.writeln(' => app/scripts/controllers/Search_controller.js');
 	grunt.log.writeln(' ======================== ');
 	if(grunt.file.isFile('app/scripts/controllers/Search_controller.js')){
+		grunt.log.writeln(' => app/scripts/controllers/Search_controller.js');
 		grunt.log.writeln(grunt.file.read('app/scripts/controllers/Search_controller.js'));
 	}
+	var fs = require('fs');
+	grunt.log.writeln(fs.readFileSync('app/scripts/controllers/Search_controller.js'));
 	grunt.log.writeln(' ======================== ');
 	grunt.file.recurse('app/scripts/', function(abspath, rootdir, subdir, filename){
 		grunt.log.writeln(subdir, filename);
