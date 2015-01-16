@@ -30,6 +30,13 @@ module.exports = function (grunt) {
 			grunt.log.writeln(grunt.file.read('.tmp/concat/scripts/app.js'));
 		}
 		grunt.log.writeln(' ======================== ');
+
+		grunt.log.writeln(' => app/scripts/controllers/Search_controller.js');
+		grunt.log.writeln(' ======================== ');
+		if(grunt.file.isFile('app/scripts/controllers/Search_controller.js')){
+			grunt.log.writeln(grunt.file.read('app/scripts/controllers/Search_controller.js'));
+		}
+		grunt.log.writeln(' ======================== ');
 	});
 
 	grunt.registerTask('test', [
