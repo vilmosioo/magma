@@ -431,7 +431,11 @@ var mock = {
 module.exports = {
 	search: function(){
 		return new promise(function(resolve){
-			resolve(mock);
+			resolve(mock.items.map(function(item){
+				return {
+					title: item.volumeInfo.title
+				}
+			}));
 		});
 	}
 };

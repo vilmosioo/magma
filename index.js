@@ -7,6 +7,8 @@ var express = require('express'),
 	exphbs  = require('express-handlebars'),
 	pck = require('./package.json'),
 	api = require('./routes/api'),
+	resources = require('./routes/static'),
+	templates = require('./routes/templates'),
 	root = require('./routes/root'),
 	dir = process.env.NODE_ENV === 'development' ? pck.config.app : pck.config.dist;
 
@@ -25,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api', api);
+app.use(resources);
+app.use(templates);
 app.use(root);
 
 var server = app.listen(process.env.OPENSHIFT_NODEJS_PORT || pck.config.port, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', function(){

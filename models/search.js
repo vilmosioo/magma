@@ -1,25 +1,23 @@
 'use strict';
 
 var route = require('./ROUTES.json')['/search/'],
-	books = require('./books_mock'),
+	books = require('./templates/books'),
+	util = require('util'),
+	querystring = require('querystring'),
 	Pr = require('bluebird');
 
 module.exports = function(args){
+
 	var data = {
-		title: route.title,
+		title: util.format(route.title, args.query.q),
 		books: []
 	};
 
 	return new Pr(function(resolve){
-		books.search(args.query.q).then(function(response){
-			data.books = response.items.map(function(item){
-				return {
-					id: item.id,
-					title: item.volumeInfo.title
-				};
-			});
-		}, function(err){
-			console.log(err);
+		books({
+			q: args.query.q
+		}).then(function(books){
+			data.books = books;
 		}).finally(function(){
 			resolve(data);
 		});

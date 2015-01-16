@@ -1,2 +1,4 @@
-<h1>{{view.title}}</h1>
-{{>templates/books}}
+<h1>{{{view.title}}}</h1>
+<div mg-include="'/views/templates/books.html?q='\{{search.term}}">
+	{{>templates/books}}
+</div>

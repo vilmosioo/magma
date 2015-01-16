@@ -1,7 +1,7 @@
 'use strict';
 
 var express= require('express'),
-	books = require('../models/books'),
+	books = require('../services/books'),
 	router = express.Router();
 
 router.use(function(req, res, next){
