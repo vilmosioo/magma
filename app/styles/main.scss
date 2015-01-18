@@ -33,12 +33,13 @@ section{
 
 .book{
   height:200px;
-  clear:both;
-  border-bottom: 1px dashed #ccc;
+  text-align: center;
+  line-height: 200px;
+  margin-bottom: 20px;
   padding-bottom:20px;
-  margin-bottom:20px;
   img{
-    float: left;
-    margin:0 20px 20px 0;
+    vertical-align: middle;
+    max-width:100%;
+    max-height:100%;
   }
 }

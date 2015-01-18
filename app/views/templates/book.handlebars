@@ -1,5 +1,5 @@
-<div class="book">
-	{{#if image}}<img src={{image}}>{{/if}}
-	<h3>{{title}}</h3>
-	<p>{{{snippet}}}</p>
-</div>
+{{#if image}}
+	<div class="book col-xs-2">
+		<img src={{image}} alt="{{title}}">
+	</div>
+{{/if}}

@@ -7,7 +7,7 @@ var util = require('util'),
 module.exports = {
 	search: function(q){
 		if(!!q){
-			return Pr.promisify(books.volumes.list)({q: q, key: process.env.GOOGLE_KEY})
+			return Pr.promisify(books.volumes.list)({q: q, maxResults: 40, key: process.env.GOOGLE_KEY})
 				.then(function(response){
 					return response[0];
 				})
