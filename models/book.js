@@ -13,13 +13,14 @@ module.exports = function(args){
 	};
 
 	return new Pr(function(resolve){
-		books.search(args.params.id).then(function(books){
-			if(books.length === 1){
-				data = books[0];
+		books.get(args.params.id).then(function(book){
+			data = book;
 
-				// override route metadata
-				data.app.title = books[0].title;
-			}
+			// override route metadata
+			data.app = {
+				title: book.title,
+				description: book.description
+			};
 		}, function(err){
 			console.log(err);
 		}).finally(function(){

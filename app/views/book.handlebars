@@ -1,4 +1,10 @@
 <h1>{{title}}</h1>
+<h2 class="author">{{#each authors}}{{name}}{{/each}}</h2>
 {{#if image}}
 <img src="{{image}}" alt="{{title}}">
 {{/if}}
+<p>{{description}}</p>
+<p><strong>Publisher</strong> {{publisher}}</p>
+<p><strong>Publication date</strong> {{publicationDate}}</p>
+<p><strong>Number of pages</strong> {{num_pages}}</p>
+<p><strong>Average rating</strong> {{average_rating}}</p>

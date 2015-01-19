@@ -5,13 +5,54 @@ var request = require('request-promise'),
 	Pr = require('bluebird'),
 	xml2js = require('xml2js'),
 	parser = Pr.promisify((new xml2js.Parser()).parseString),
-	SEARCH = 'https://www.goodreads.com/search/index.xml?q=%s&key=' + process.env.GOODREADS_KEY;
+	SEARCH = 'https://www.goodreads.com/search/index.xml?q=%s&key=' + process.env.GOODREADS_KEY,
+	GET = 'https://www.goodreads.com/book/show/%s?key='+ process.env.GOODREADS_KEY;
 
 module.exports = {
+	get: function(id){
+		if(!!id){
+			console.log('Request => ' + util.format(GET, id));
+			return request(util.format(GET, id), {
+					rejectUnauthorized: false
+				})
+				.then(function(response){
+					return parser(response);
+				}, function(err){
+					console.log(err);
+				})
+				.then(function(response){
+					return response.GoodreadsResponse.book[0];
+				})
+				.then(function(book){
+					var obj = ['id', 'isbn', 'title', 'isbn13', 'description', 'publisher', 'average_rating', 'num_pages'].reduce(function(obj, current){
+						obj[current] = book[current][0];
+						return obj;
+					}, {});
+					obj.publicationDate = new Date(book.publication_year[0], book.publication_month[0], book.publication_day[0]);
+					obj.image = book.image_url[0].replace(/(\d+)[m,s]\//, '$1l/');
+					obj.authors = book.authors.map(function(item){
+						var author = item.author[0];
+						return ['name', 'image_url', 'average_rating'].reduce(function(o, current){
+							o[current] = author[current][0];
+							return o;
+						}, {})
+					});
+					return obj;
+				});
+		} else {
+			return new Pr(function(resolve, reject){
+				reject({
+					error: 'ID must be specified'
+				});
+			});
+		}
+	},
 	search: function(q){
 		if(!!q){
 			console.log('Request => ' + util.format(SEARCH, q));
-			return request(util.format(SEARCH, q))
+			return request(util.format(SEARCH, q), {
+					rejectUnauthorized: false
+				})
 				.then(function(response){
 					return parser(response);
 				}, function(err){
