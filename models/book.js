@@ -13,6 +13,10 @@ module.exports = function(args){
 		books.search(args.params.id).then(function(books){
 			if(books.length === 1){
 				data = books[0];
+				data._app = {
+					title: books[0].title,
+					description: ''
+				}
 			}
 		}, function(err){
 			console.log(err);
