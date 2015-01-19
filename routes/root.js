@@ -4,7 +4,7 @@ var express= require('express'),
 	path = require('path'),
 	routes = require('../models/ROUTES.json'),
 	Pr = require('bluebird'),
-	util = require('util'),
+	extend = require('extend'),
 	router = express.Router();
 
 var _render = function(route, isTemplate){
@@ -33,13 +33,7 @@ var _render = function(route, isTemplate){
 		}
 
 		model({query: req.query || {}, params: req.params || {}}).then(function(view){
-			data.view = view;
-
-			// a view can overwrite the routes title/description
-			if(view._app){
-				data.app.title = util.format(data.app.title, view._app.title);
-				data.app.description = util.format(data.app.description, view._app.description);
-			}
+			data = extend(data, view);
 
 			res.render(name, data);
 		});

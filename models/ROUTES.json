@@ -20,8 +20,6 @@
 	},
 	"/book/:id": {
 		"templateUrl": "/views/book.html",
-		"model": "book",
-		"title": "%s",
-		"description": "%s"
+		"model": "book"
 	}
 }

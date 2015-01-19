@@ -33,7 +33,8 @@
     "express-handlebars": "1.1.0",
     "bluebird": "2.7.0",
     "request-promise": "^0.3.2",
-    "xml2js": "^0.4.4"
+    "xml2js": "^0.4.4",
+    "extend": "^2.0.0"
   },
   "devDependencies": {
     "connect-livereload": "0.5.2",

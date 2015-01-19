@@ -6,17 +6,19 @@ var books = require('../services/books'),
 module.exports = function(args){
 
 	var data = {
-		title: '[Book not found]'
+		title: '[Book not found]',
+		app: {
+			title: '[Book not found]'
+		}
 	};
 
 	return new Pr(function(resolve){
 		books.search(args.params.id).then(function(books){
 			if(books.length === 1){
 				data = books[0];
-				data._app = {
-					title: books[0].title,
-					description: ''
-				}
+
+				// override route metadata
+				data.app.title = books[0].title;
 			}
 		}, function(err){
 			console.log(err);
