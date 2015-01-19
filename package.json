@@ -32,7 +32,8 @@
     "express": "4.10.7",
     "express-handlebars": "1.1.0",
     "bluebird": "2.7.0",
-    "googleapis": "^1.1.0"
+    "request-promise": "^0.3.2",
+    "xml2js": "^0.4.4"
   },
   "devDependencies": {
     "connect-livereload": "0.5.2",
