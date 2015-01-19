@@ -5,41 +5,37 @@ var express= require('express'),
 	routes = require('../models/ROUTES.json'),
 	router = express.Router();
 
-router.use(function(req, res, next){
-	var id = Object.keys(routes).filter(function(path){
-		return routes[path].templateUrl === req.path;
-	}) || '/', route = routes[req.path] || routes[id]; // this is either a route identified by the request path or by the templateUrl of a route;
+var _render = function(route, isTemplate){
+	var model = require('../models/' + route.model),
+		name = path.basename(route.templateUrl, path.extname(route.templateUrl));
 
-	req.data = {
-		route: route,
-		name: path.basename(route.templateUrl, path.extname(route.templateUrl))
+	var data = !isTemplate ? {
+		constants: {
+			ROUTES: JSON.stringify(routes)
+		},
+		app: {
+			title: route.title,
+			description: route.description
+		}
+	} : {
+		layout: false
 	};
 
-	// todo set route as a 404 route if it doesn't exist (but only paths, not files)
-
-	next();
-});
-
-// always return index.html
-router.use(function(req, res){
-	var route = req.data.route,
-		name = req.data.name,
-		view = require('../models/' + name);
-
-	view({
-		query: req.query
-	}).then(function(view){
-		res.render(name, {
-			constants: {
-				ROUTES: JSON.stringify(routes)
-			},
-			app: {
-				title: route.title,
-				description: route.description
-			},
-			view: view
+	return function(req, res){
+		model({query: req.query}).then(function(view){
+			data.view = view;
+			res.render(name, data);
 		});
-	});
-});
+	};
+};
+
+for(var key in routes){
+	if(routes.hasOwnProperty(key)){
+		var route = routes[key];
+
+		router.get(key, _render(route));
+		router.get(route.templateUrl, _render(route, true));
+	}
+}
 
 module.exports = router;
