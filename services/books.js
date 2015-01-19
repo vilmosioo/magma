@@ -31,6 +31,7 @@ module.exports = {
 				.then(function(books){
 					return books.map(function(item){
 						return {
+							id: item.id[0]._,
 							title: item.title[0],
 							image: item.image_url[0].replace(/(\d+)[m,s]\//, '$1l/')
 						}

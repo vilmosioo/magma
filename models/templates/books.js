@@ -9,7 +9,7 @@ var Pr = require('bluebird'),
 
 module.exports = function(args){
 	return new Pr(function(resolve, reject){
-		books.search(querystring.escape(args.q)).then(function(books){
+		books.search(querystring.escape(args.query.q)).then(function(books){
 			resolve({
 				books: books
 			});

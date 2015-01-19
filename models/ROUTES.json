@@ -17,5 +17,11 @@
 		"controller": "Search_controller",
 		"title": "Search results",
 		"description": "Search results"
+	},
+	"/book/:id": {
+		"templateUrl": "/views/book.html",
+		"model": "book",
+		"title": "%s",
+		"description": "%s"
 	}
 }

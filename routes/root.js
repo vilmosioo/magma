@@ -3,12 +3,10 @@
 var express= require('express'),
 	path = require('path'),
 	routes = require('../models/ROUTES.json'),
+	Pr = require('bluebird'),
 	router = express.Router();
 
 var _render = function(route, isTemplate){
-	var model = require('../models/' + route.model),
-		name = path.basename(route.templateUrl, path.extname(route.templateUrl));
-
 	var data = !isTemplate ? {
 		constants: {
 			ROUTES: JSON.stringify(routes)
@@ -22,7 +20,18 @@ var _render = function(route, isTemplate){
 	};
 
 	return function(req, res){
-		model({query: req.query}).then(function(view){
+		var name = !route ? path.join(req.params.path || '', req.params.filename) : path.basename(route.templateUrl, path.extname(route.templateUrl)), model;
+
+		// the model for the view might not be defined
+		try{
+			model = require(path.join('../models/', name));
+		} catch(e){
+			model = function(){
+				return Pr.resolve();
+			};
+		}
+
+		model({query: req.query || {}, params: req.params || {}}).then(function(view){
 			data.view = view;
 			res.render(name, data);
 		});
@@ -37,5 +46,7 @@ for(var key in routes){
 		router.get(route.templateUrl, _render(route, true));
 	}
 }
+
+router.get('/views/:path?/:filename.html', _render(null, true));
 
 module.exports = router;
