@@ -6,8 +6,11 @@ angular.module('Magma')
 			restrict: 'A',
 			scope: true,
 			link: function(scope){
-				scope.$watchCollection('books', function(value){
-					console.log(value);
+				var unbind = scope.$watchCollection('books', function(value){
+					if(value){
+
+						unbind();
+					}
 				});
 			}
 		};

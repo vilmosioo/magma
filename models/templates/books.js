@@ -9,7 +9,7 @@ module.exports = function(args){
 		if(args.query.q){
 			goodreads.search(querystring.escape(args.query.q), args.query).then(function(books){
 				resolve({
-					books: books
+					books: books.items
 				});
 			}, reject);
 		} else if(args.query.author){

@@ -129,8 +129,8 @@ module.exports = {
 		if(!!q){
 			console.log('Request => ' + util.format(SEARCH, q));
 			return request(util.format(SEARCH, q), {
-					rejectUnauthorized: false
-				})
+				rejectUnauthorized: false
+			})
 				.then(function(response){
 					return parser(response);
 				}, function(err){
@@ -140,15 +140,23 @@ module.exports = {
 					};
 				})
 				.then(function(response){
-					return response.GoodreadsResponse.search[0].results[0].work;
-				})
-				.then(function(works){
-					return works.slice(options.offset, options.limit).map(function(work){
-						return work.best_book[0];
+					var search = response.GoodreadsResponse.search[0];
+					return ['results-start', 'results-end', 'total-results'].reduce(function(obj, current){
+						obj[current] = search[current][0];
+						return obj;
+					}, {
+						items: search.results[0].work
 					});
 				})
-				.then(function(books){
-					return books.map(_formatBookLite);
+				.then(function(data){
+					data.items = data.items.slice(options.offset, options.limit).map(function(work){
+						return work.best_book[0];
+					});
+					return data;
+				})
+				.then(function(data){
+					data.items = data.items.map(_formatBookLite);
+					return data;
 				});
 		} else {
 			return new Pr(function(resolve, reject){
