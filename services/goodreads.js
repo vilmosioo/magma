@@ -6,9 +6,44 @@ var request = require('request-promise'),
 	xml2js = require('xml2js'),
 	parser = Pr.promisify((new xml2js.Parser()).parseString),
 	SEARCH = 'https://www.goodreads.com/search/index.xml?q=%s&key=' + process.env.GOODREADS_KEY,
-	GET = 'https://www.goodreads.com/book/show/%s?key='+ process.env.GOODREADS_KEY;
+	GET = 'https://www.goodreads.com/book/show/%s?key='+ process.env.GOODREADS_KEY,
+	AUTHOR = 'https://www.goodreads.com/author/show/%s.xml?key='+ process.env.GOODREADS_KEY;
 
 module.exports = {
+	author: function(id){
+		if(!!id){
+			console.log('Request => ' + util.format(AUTHOR, id));
+			return request(util.format(AUTHOR, id), {
+				rejectUnauthorized: false
+			})
+				.then(function(response){
+					return parser(response);
+				}, function(err){
+					console.log(err);
+				})
+				.then(function(response){
+					return response.GoodreadsResponse.author[0];
+				})
+				.then(function(author){
+					var obj = ['id', 'name', 'about'].reduce(function(obj, current){
+						obj[current] = author[current][0];
+						return obj;
+					}, {});
+					obj.fans_count = author.fans_count[0]._;
+					obj.image = author.image_url[0];
+					obj.books = author.books[0].book.map(function(book){
+						return book.id[0]._;
+					});
+					return obj;
+				});
+		} else {
+			return new Pr(function(resolve, reject){
+				reject({
+					error: 'ID must be specified'
+				});
+			});
+		}
+	},
 	get: function(id){
 		if(!!id){
 			console.log('Request => ' + util.format(GET, id));
@@ -32,7 +67,7 @@ module.exports = {
 					obj.image = book.image_url[0].replace(/(\d+)[m,s]\//, '$1l/');
 					obj.authors = book.authors.map(function(item){
 						var author = item.author[0];
-						return ['name', 'image_url', 'average_rating'].reduce(function(o, current){
+						return ['name', 'image_url', 'average_rating', 'id'].reduce(function(o, current){
 							o[current] = author[current][0];
 							return o;
 						}, {})

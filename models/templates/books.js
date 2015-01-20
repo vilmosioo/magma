@@ -1,7 +1,7 @@
 'use strict';
 
 var Pr = require('bluebird'),
-	books = require('../../services/books'),
+	goodreads = require('../../services/goodreads'),
 	querystring = require('querystring');
 
 // @param type [search, list]
@@ -9,7 +9,7 @@ var Pr = require('bluebird'),
 
 module.exports = function(args){
 	return new Pr(function(resolve, reject){
-		books.search(querystring.escape(args.query.q)).then(function(books){
+		goodreads.search(querystring.escape(args.query.q)).then(function(books){
 			resolve({
 				books: books
 			});

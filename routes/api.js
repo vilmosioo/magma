@@ -1,7 +1,7 @@
 'use strict';
 
 var express= require('express'),
-	books = require('../services/books'),
+	goodreads = require('../services/goodreads'),
 	router = express.Router();
 
 router.use(function(req, res, next){
@@ -10,7 +10,7 @@ router.use(function(req, res, next){
 	next();
 });
 router.get('/search', function(req, res){
-	books.search(req.query.q).then(function(books){
+	goodreads.search(req.query.q).then(function(books){
 		res.status(200).send(books);
 	}, function(err){
 		res.send(400).send(err);

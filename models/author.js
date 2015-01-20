@@ -1,30 +1,29 @@
 'use strict';
 
-var books = require('../services/goodreads'),
+var goodreads = require('../services/goodreads'),
 	Pr = require('bluebird');
 
 module.exports = function(args){
 
 	var data = {
-		title: '[Book not found]',
+		title: '[Author not found]',
 		app: {
-			title: '[Book not found]'
+			title: '[Author not found]'
 		}
 	};
 
 	return new Pr(function(resolve){
-		books.get(args.params.id || args.query.id).then(function(book){
-			data = book;
+		goodreads.author(args.params.id || args.query.id).then(function(author){
+			data = author;
 
 			// override route metadata
 			data.app = {
-				title: book.title,
-				description: book.description
+				title: author.name
 			};
 		}, function(err){
 			console.log(err);
 		}).finally(function(){
-			resolve(data);
-		});
+				resolve(data);
+			});
 	});
 };

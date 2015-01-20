@@ -1,0 +1,11 @@
+<h2>{{name}}</h2>
+
+{{#if image}}
+	<img class="book_cover" src="{{image}}" alt="{{name}}">
+{{/if}}
+
+{{#if fans_count}}<p><strong>Number of fans</strong> {{fans_count}}</p>{{/if}}
+
+<p>{{{about}}}</p>
+
+{{>templates/books}}

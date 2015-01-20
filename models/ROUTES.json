@@ -21,5 +21,9 @@
 	"/book/:id": {
 		"templateUrl": "/views/book.html",
 		"model": "book"
+	},
+	"/author/:id": {
+		"templateUrl": "/views/author.html",
+		"model": "author"
 	}
 }
