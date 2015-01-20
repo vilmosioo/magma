@@ -83,6 +83,18 @@ section{
   min-height:440px;
 }
 
+.progress{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+}
+.progress-bar{
+  -webkit-transition-duration:10s;
+  transition-duration:10s;
+}
+
 .view-animate-container {
   position:relative;
 }
