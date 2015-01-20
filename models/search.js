@@ -16,7 +16,7 @@ module.exports = function(args){
 		}
 	}, _defaults = {
 		offset: 0,
-		limit: 18
+		limit: 999
 	};
 
 	extend(args.query, _defaults);
