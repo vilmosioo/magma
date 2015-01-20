@@ -2,6 +2,7 @@
 
 var route = require('./ROUTES.json')['/search/'],
 	books = require('./templates/books'),
+	extend = require('extend'),
 	Pr = require('bluebird');
 
 module.exports = function(args){
@@ -9,7 +10,12 @@ module.exports = function(args){
 	var data = {
 		title: route.title,
 		books: []
+	}, _defaults = {
+		offset: 0,
+		limit: 100
 	};
+
+	extend(args.query, _defaults);
 
 	return new Pr(function(resolve){
 		books(args).then(function(view){

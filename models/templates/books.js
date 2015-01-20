@@ -7,13 +7,13 @@ var Pr = require('bluebird'),
 module.exports = function(args){
 	return new Pr(function(resolve, reject){
 		if(args.query.q){
-			goodreads.search(querystring.escape(args.query.q)).then(function(books){
+			goodreads.search(querystring.escape(args.query.q), args.query).then(function(books){
 				resolve({
 					books: books
 				});
 			}, reject);
 		} else if(args.query.author){
-			goodreads.booksByAuthor(querystring.escape(args.query.author)).then(function(books){
+			goodreads.booksByAuthor(querystring.escape(args.query.author), args.query).then(function(books){
 				resolve({
 					books: books
 				});

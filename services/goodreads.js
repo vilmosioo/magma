@@ -5,6 +5,7 @@ var request = require('request-promise'),
 	Pr = require('bluebird'),
 	xml2js = require('xml2js'),
 	parser = Pr.promisify((new xml2js.Parser()).parseString),
+	extend = require('extend'),
 	SEARCH = 'https://www.goodreads.com/search/index.xml?q=%s&key=' + process.env.GOODREADS_KEY,
 	GET = 'https://www.goodreads.com/book/show/%s?key=' + process.env.GOODREADS_KEY,
 	AUTHOR = 'https://www.goodreads.com/author/show/%s.xml?key=' + process.env.GOODREADS_KEY,
@@ -27,8 +28,14 @@ var _formatBook = function(book){
 	return obj;
 };
 
+var _defaults = {
+	offset: 0,
+	limit: 12
+};
+
 module.exports = {
-	booksByAuthor: function(id){
+	booksByAuthor: function(id, options){
+		options = extend({}, _defaults, options);
 		if(!!id){
 			console.log('Request => ' + util.format(BOOKS_BY_AUTHOR, id));
 			return request(util.format(BOOKS_BY_AUTHOR, id), {
@@ -43,7 +50,7 @@ module.exports = {
 					return response.GoodreadsResponse.author[0];
 				})
 				.then(function(author){
-					return author.books[0].book.slice(0, 12).map(_formatBook);
+					return author.books[0].book.slice(options.offset, options.limit).map(_formatBook);
 				});
 		} else {
 			return new Pr(function(resolve, reject){
@@ -53,7 +60,8 @@ module.exports = {
 			});
 		}
 	},
-	author: function(id){
+	author: function(id, options){
+		options = extend({}, _defaults, options);
 		if(!!id){
 			console.log('Request => ' + util.format(AUTHOR, id));
 			return request(util.format(AUTHOR, id), {
@@ -74,7 +82,7 @@ module.exports = {
 					}, {});
 					obj.fans_count = author.fans_count[0]._;
 					obj.image = author.image_url[0];
-					obj.books = author.books[0].book.map(_formatBook);
+					obj.books = author.books[0].book.slice(options.offset, options.limit).map(_formatBook);
 					return obj;
 				});
 		} else {
@@ -108,7 +116,8 @@ module.exports = {
 			});
 		}
 	},
-	search: function(q){
+	search: function(q, options){
+		options = extend({}, _defaults, options);
 		if(!!q){
 			console.log('Request => ' + util.format(SEARCH, q));
 			return request(util.format(SEARCH, q), {
@@ -126,7 +135,7 @@ module.exports = {
 					return response.GoodreadsResponse.search[0].results[0].work;
 				})
 				.then(function(works){
-					return works.map(function(work){
+					return works.slice(options.offset, options.limit).map(function(work){
 						return work.best_book[0];
 					});
 				})
