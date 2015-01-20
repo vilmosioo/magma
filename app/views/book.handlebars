@@ -1,9 +1,9 @@
-<h2>{{title}}</h2>
+<h3>{{title}}</h3>
 
 {{#if image}}
 	<img class="book_cover" src="{{image}}" alt="{{title}}">
 {{/if}}
-<h3 class="authors">{{#each authors}}<a href="/author/{{id}}">{{name}}</a>{{/each}}</h3>
+<h4 class="authors">{{#each authors}}<a href="/author/{{id}}">{{name}}</a>{{/each}}</h4>
 
 {{#if publisher}}<p><strong>Publisher</strong> {{publisher}}</p>{{/if}}
 {{#if publicationDate}}<p><strong>Publication date</strong> {{publicationDate}}</p>{{/if}}

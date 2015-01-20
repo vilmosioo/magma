@@ -1,5 +1,5 @@
 
-<h2>{{name}}</h2>
+<h3>{{name}}</h3>
 
 {{#if image}}
 	<img class="book_cover" src="{{image}}" alt="{{name}}">
@@ -10,7 +10,7 @@
 <p>{{{about}}}</p>
 
 <div class="clearfix"></div>
-<h3>Books</h3>
+<h4>Books</h4>
 <div class="author-books clearfix">
 	<div ng-include="'/views/templates/books.html?author={{id}}'"></div>
 </div>
