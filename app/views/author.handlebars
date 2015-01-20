@@ -9,4 +9,7 @@
 
 <p>{{{about}}}</p>
 
-<div books="{{json books}}"></div>
+<h3>Books</h3>
+<div class="author-books clearfix">
+	<div ng-include="'/views/templates/books.html?author={{id}}'"></div>
+</div>
