@@ -15,7 +15,12 @@ var app = express(),
 	hbs = exphbs.create({
 		defaultLayout: 'index',
 		layoutsDir: path.join(__dirname, dir),
-		partialsDir: path.join(__dirname, dir + '/views')
+		partialsDir: path.join(__dirname, dir + '/views'),
+		helpers: {
+			json: function(obj){
+				return JSON.stringify(obj);
+			}
+		}
 	});
 
 app.set('views', path.join(__dirname, dir + '/views'));
