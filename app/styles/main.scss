@@ -40,8 +40,12 @@ section{
   margin-bottom:20px;
   line-height: 200px;
   @media screen and (max-width: 768px) {
-    height:auto;
-    line-height: auto;
+    height:400px;
+    line-height: 400px;
+  }
+  @media screen and (max-width: 625px) {
+    height:300px;
+    line-height: 300px;
   }
   img{
     vertical-align: bottom;
