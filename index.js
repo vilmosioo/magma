@@ -18,7 +18,9 @@ var app = express(),
 		partialsDir: path.join(__dirname, dir + '/views'),
 		helpers: {
 			json: function(obj){
-				return JSON.stringify(obj);
+				var data = {};
+				data[obj] = this[obj];
+				return JSON.stringify(data);
 			}
 		}
 	});
