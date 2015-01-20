@@ -23,10 +23,6 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
 	.run(function($route, $rootScope, $window){
 		var enabled = false;
 
-		$rootScope.global = {
-			routing: false
-		};
-
 		$rootScope.app = {
 			title: '',
 			description: ''
@@ -35,13 +31,6 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
 		$rootScope.$on('$routeChangeStart', function(ev, currRoute){
 			$rootScope.app.title = currRoute.$$route.title || '';
 			$rootScope.app.description = currRoute.$$route.description || '';
-
-			// fire on seconf routechange start
-			// todo move this to mgview
-			if(enabled){
-				$rootScope.global.routing = true;
-			}
-			enabled = true;
 		});
 
 		$rootScope.$on('$routeChangeSuccess', function(){
