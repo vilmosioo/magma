@@ -13,7 +13,7 @@ module.exports = function(args){
 	};
 
 	return new Pr(function(resolve){
-		books.get(args.params.id).then(function(book){
+		books.get(args.params.id || args.query.id).then(function(book){
 			data = book;
 
 			// override route metadata
