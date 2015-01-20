@@ -1,5 +1,14 @@
-<h1>{{title}}</h1>
-{{>templates/books}}
+<div books mg-scope="{{json 'books' 'pagination'}}">
+	<h1>{{title}}</h1>
+	{{>templates/pagination}}
+	<div class="search-results">
+		<div ng-if="pagination.current == {{pagination.current}}">
+			{{>templates/books}}
+		</div>
+	</div>
+	{{>templates/pagination}}
+</div>
+
 {{!--
 <ul class="list-group">
 	{{#each books}}

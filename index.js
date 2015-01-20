@@ -17,9 +17,12 @@ var app = express(),
 		layoutsDir: path.join(__dirname, dir),
 		partialsDir: path.join(__dirname, dir + '/views'),
 		helpers: {
-			json: function(obj){
+			json: function(){
 				var data = {};
-				data[obj] = this[obj];
+				for(var i = 0, l = arguments.length; i < l; i++){
+					var key = arguments[i];
+					data[key] = this[key];
+				}
 				return JSON.stringify(data);
 			}
 		}

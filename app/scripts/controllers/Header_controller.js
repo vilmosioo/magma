@@ -6,6 +6,12 @@ angular.module('Magma')
 			q: $routeParams.q || ''
 		};
 
+		$scope.$watch(function(){
+			return $routeParams.q;
+		}, function(value){
+			$scope.models.q = value;
+		});
+
 		$scope.handlers = {
 			search: function(){
 				if($scope.SearchForm.$valid){

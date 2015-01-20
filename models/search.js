@@ -23,7 +23,7 @@ module.exports = function(args){
 
 	return new Pr(function(resolve){
 		books(args).then(function(view){
-			data.books = view.books;
+			extend(data, view);
 		}).finally(function(){
 			resolve(data);
 		});

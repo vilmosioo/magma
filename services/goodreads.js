@@ -6,7 +6,7 @@ var request = require('request-promise'),
 	xml2js = require('xml2js'),
 	parser = Pr.promisify((new xml2js.Parser()).parseString),
 	extend = require('extend'),
-	SEARCH = 'https://www.goodreads.com/search/index.xml?q=%s&key=' + process.env.GOODREADS_KEY,
+	SEARCH = 'https://www.goodreads.com/search/index.xml?q=%s&page=%s&key=' + process.env.GOODREADS_KEY,
 	GET = 'https://www.goodreads.com/book/show/%s?key=' + process.env.GOODREADS_KEY,
 	AUTHOR = 'https://www.goodreads.com/author/show/%s.xml?key=' + process.env.GOODREADS_KEY,
 	BOOKS_BY_AUTHOR = 'https://www.goodreads.com/author/list/%s.xml?key=' + process.env.GOODREADS_KEY;
@@ -32,13 +32,14 @@ var _formatBookLite = function(item){
 	return {
 		id: item.id[0]._,
 		title: item.title[0],
-		image: item.image_url[0]
+		image: item.image_url[0].replace(/(\d+)[m,s]\//, '$1l/')
 	}
 };
 
 var _defaults = {
 	offset: 0,
-	limit: 12
+	limit: 12,
+	page: 1
 };
 
 module.exports = {
@@ -127,8 +128,8 @@ module.exports = {
 	search: function(q, options){
 		options = extend({}, _defaults, options);
 		if(!!q){
-			console.log('Request => ' + util.format(SEARCH, q));
-			return request(util.format(SEARCH, q), {
+			console.log('Request => ' + util.format(SEARCH, q, options.page));
+			return request(util.format(SEARCH, q, options.page), {
 				rejectUnauthorized: false
 			})
 				.then(function(response){
@@ -141,12 +142,14 @@ module.exports = {
 				})
 				.then(function(response){
 					var search = response.GoodreadsResponse.search[0];
-					return ['results-start', 'results-end', 'total-results'].reduce(function(obj, current){
-						obj[current] = search[current][0];
-						return obj;
-					}, {
-						items: search.results[0].work
-					});
+					return {
+						items: search.results[0].work,
+						pagination: {
+							current: options.page || 1,
+							perPage: search.results[0].work.length,
+							total: parseInt(search['total-results'][0], 10)
+						}
+					}
 				})
 				.then(function(data){
 					data.items = data.items.slice(options.offset, options.limit).map(function(work){

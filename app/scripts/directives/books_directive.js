@@ -1,15 +1,18 @@
 'use strict';
 
 angular.module('Magma')
-	.directive('books', function(){
+	.directive('books', function($location){
 		return {
 			restrict: 'A',
 			scope: true,
-			link: function(scope){
-				var unbind = scope.$watchCollection('books', function(value){
-					if(value){
+			controller: function($scope){
+				var params = $location.search(),
+					current = params.page || 1;
 
-						unbind();
+				$scope.$watch('pagination.current', function(page){
+					if(page && current !== page){
+						console.log('redirect');
+						$location.search(angular.extend(params, {page: page}));
 					}
 				});
 			}
