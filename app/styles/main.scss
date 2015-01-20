@@ -82,3 +82,29 @@ section{
 .author-books{
   min-height:440px;
 }
+
+.view-animate-container {
+  position:relative;
+}
+
+.view-animate.ng-enter, .view-animate.ng-leave {
+  -webkit-transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+  transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+
+  opacity:1;
+  position:absolute;
+  top:0;
+  left:15px; // set from bootstrap
+  right:15px;
+  bottom:0;
+}
+
+.view-animate.ng-enter {
+  opacity:0;
+}
+.view-animate.ng-enter.ng-enter-active {
+  opacity:1
+}
+.view-animate.ng-leave.ng-leave-active {
+  opacity:0;
+}
