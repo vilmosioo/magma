@@ -74,6 +74,7 @@ module.exports = {
 					}, {});
 					obj.fans_count = author.fans_count[0]._;
 					obj.image = author.image_url[0];
+					obj.books = author.books[0].book.map(_formatBook);
 					return obj;
 				});
 		} else {
