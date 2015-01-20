@@ -1,11 +1,13 @@
+<h2>{{title}}</h2>
+
 {{#if image}}
 	<img class="book_cover" src="{{image}}" alt="{{title}}">
 {{/if}}
-<h2>{{title}}</h2>
 <h3 class="authors">{{#each authors}}{{name}}{{/each}}</h3>
-<p>{{{description}}}</p>
-<div class="clearfix"></div>
+
 {{#if publisher}}<p><strong>Publisher</strong> {{publisher}}</p>{{/if}}
 {{#if publicationDate}}<p><strong>Publication date</strong> {{publicationDate}}</p>{{/if}}
 {{#if num_pages}}<p><strong>Number of pages</strong> {{num_pages}}</p>{{/if}}
 {{#if average_rating}}<p><strong>Average rating</strong> {{average_rating}}</p>{{/if}}
+
+<p>{{{description}}}</p>
