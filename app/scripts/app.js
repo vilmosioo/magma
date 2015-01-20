@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
-	.config(function($locationProvider, $routeProvider, ROUTES){
+	.config(function($locationProvider, $httpProvider, $routeProvider, ROUTES){
 		$locationProvider.html5Mode({
 			enabled: true,
 			requireBase: false
@@ -17,6 +17,8 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 			.otherwise({
 				redirectTo: '/'
 			});
+
+		$httpProvider.interceptors.push('mgViewInterceptor');
 	})
 	.run(function($route, $rootScope){
 		$rootScope.global = {
