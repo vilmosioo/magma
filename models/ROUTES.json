@@ -15,7 +15,8 @@
 		"templateUrl": "/views/search.html",
 		"model": "search",
 		"title": "Search results for %s",
-		"description": "Search results"
+		"description": "Search results",
+		"reloadOnSearch": false
 	},
 	"/book/:id": {
 		"templateUrl": "/views/book.html",

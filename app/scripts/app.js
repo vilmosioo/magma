@@ -21,6 +21,8 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
 		$httpProvider.interceptors.push('mgViewInterceptor');
 	})
 	.run(function($route, $rootScope, $window){
+		var enabled = false;
+
 		$rootScope.global = {
 			routing: false
 		};
@@ -30,24 +32,16 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
 			description: ''
 		};
 
-		var unbind = $rootScope.$on('$locationChangeStart', function(ev, newState, oldState){
-			if(newState.charAt(newState.length - 1) === '/'){
-				newState = newState.slice(0, newState.length - 1);
-			}
-
-			if(oldState.charAt(oldState.length - 1) === '/'){
-				oldState = oldState.slice(0, oldState.length - 1);
-			}
-
-			if(newState !== oldState){
-				$rootScope.global.routing = true;
-				unbind();
-			}
-		});
-
 		$rootScope.$on('$routeChangeStart', function(ev, currRoute){
 			$rootScope.app.title = currRoute.$$route.title || '';
 			$rootScope.app.description = currRoute.$$route.description || '';
+
+			// fire on seconf routechange start
+			// todo move this to mgview
+			if(enabled){
+				$rootScope.global.routing = true;
+			}
+			enabled = true;
 		});
 
 		$rootScope.$on('$routeChangeSuccess', function(){

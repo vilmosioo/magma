@@ -2,7 +2,7 @@
 	<h1>{{title}}</h1>
 	{{>templates/pagination}}
 	<div class="search-results">
-		<div ng-if="pagination.current == {{pagination.current}}">
+		<div mg-include="templates.books">
 			{{>templates/books}}
 		</div>
 	</div>
