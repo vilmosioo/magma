@@ -28,6 +28,14 @@ var _formatBook = function(book){
 	return obj;
 };
 
+var _formatBookLite = function(item){
+	return {
+		id: item.id[0]._,
+		title: item.title[0],
+		image: item.image_url[0].replace(/(\d+)[m,s]\//, '$1l/')
+	}
+};
+
 var _defaults = {
 	offset: 0,
 	limit: 12
@@ -50,7 +58,7 @@ module.exports = {
 					return response.GoodreadsResponse.author[0];
 				})
 				.then(function(author){
-					return author.books[0].book.slice(options.offset, options.limit).map(_formatBook);
+					return author.books[0].book.slice(options.offset, options.limit).map(_formatBookLite);
 				});
 		} else {
 			return new Pr(function(resolve, reject){
@@ -140,13 +148,7 @@ module.exports = {
 					});
 				})
 				.then(function(books){
-					return books.map(function(item){
-						return {
-							id: item.id[0]._,
-							title: item.title[0],
-							image: item.image_url[0].replace(/(\d+)[m,s]\//, '$1l/')
-						}
-					});
+					return books.map(_formatBookLite);
 				});
 		} else {
 			return new Pr(function(resolve, reject){

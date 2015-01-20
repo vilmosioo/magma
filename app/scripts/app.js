@@ -20,7 +20,7 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 
 		$httpProvider.interceptors.push('mgViewInterceptor');
 	})
-	.run(function($route, $rootScope){
+	.run(function($route, $rootScope, $window){
 		$rootScope.global = {
 			routing: false
 		};
@@ -48,5 +48,9 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute'])
 		$rootScope.$on('$routeChangeStart', function(ev, currRoute){
 			$rootScope.app.title = currRoute.$$route.title || '';
 			$rootScope.app.description = currRoute.$$route.description || '';
+		});
+
+		$rootScope.$on('$routeChangeSuccess', function(){
+			$window.scrollTo(0, 0);
 		});
 	});

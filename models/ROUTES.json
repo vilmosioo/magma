@@ -14,7 +14,6 @@
 	"/search/": {
 		"templateUrl": "/views/search.html",
 		"model": "search",
-		"controller": "Search_controller",
 		"title": "Search results for %s",
 		"description": "Search results"
 	},
