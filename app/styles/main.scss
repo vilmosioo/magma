@@ -69,12 +69,18 @@ section{
   min-height:880px;
 }
 
-.book_cover{
-  float:left;
-  border:1px solid black;
-  margin: 0 20px 20px 0;
-  width:247px;
-  min-height:100px;
+.book, .author{
+  .book_cover{
+    float:left;
+    border:1px solid black;
+    margin: 0 20px 20px 0;
+    width:247px;
+    max-width:100%;
+    min-height:100px;
+    @media screen and (max-width: 625px) {
+      float:none; display:block; margin: 20px auto;
+    }
+  }
 }
 
 .authors{
