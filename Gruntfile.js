@@ -43,9 +43,10 @@ module.exports = function (grunt) {
 		'concat',
 		'ngAnnotate',
 		'uglify',
+		'copy:magma',
 		'cssmin',
 		'filerev',
-		'copy',
+		'copy:static',
 		'imagemin',
 		'usemin'
 	]);
