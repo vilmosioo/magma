@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Magma')
+angular.module('MagmaDemo')
 	.factory('appInterceptor', function($rootScope){
 		return {
 			response: function(res) {

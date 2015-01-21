@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
+angular.module('MagmaDemo', ['ui.bootstrap', 'ngRoute', 'ngAnimate', 'Magma'])
 	.config(function($locationProvider, $httpProvider, $routeProvider, ROUTES){
 		$locationProvider.html5Mode({
 			enabled: true,

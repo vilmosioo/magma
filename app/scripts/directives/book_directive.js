@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Magma')
+angular.module('MagmaDemo')
 	.directive('book', function(){
 		return {
 			restrict: 'A',

@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="Magma">
+<html ng-app="MagmaDemo">
 	<head>
 	  <title mg-bind="app.title">{{app.title}}</title>
 		<meta name="description" ng-attr-content="\{{app.description}}" content="{{app.description}}">
@@ -43,23 +43,27 @@
 		<script src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<!-- endbuild -->
 
+		<!-- build:js scripts/magma.js -->
+		<script src="/magma/app.js"></script>
+		<script src="/magma/directives/mgView_directive.js"></script>
+		<script src="/magma/directives/mgBind_directive.js"></script>
+		<script src="/magma/directives/mgInclude_directive.js"></script>
+		<script src="/magma/directives/mgSubmit_directive.js"></script>
+		<script src="/magma/directives/mgScope_directive.js"></script>
+		<!-- endbuild -->
+
 		<!-- build:js scripts/app.js -->
 		<script src="/scripts/app.js"></script>
 		<script src="/scripts/controllers/Header_controller.js"></script>
-		<script src="/scripts/directives/mgView_directive.js"></script>
-		<script src="/scripts/directives/mgBind_directive.js"></script>
-		<script src="/scripts/directives/mgInclude_directive.js"></script>
-		<script src="/scripts/directives/mgSubmit_directive.js"></script>
-		<script src="/scripts/directives/mgScope_directive.js"></script>
 		<script src="/scripts/directives/books_directive.js"></script>
 		<script src="/scripts/directives/book_directive.js"></script>
-		<script src="/scripts/services/mgViewInterceptor_service.js"></script>
 		<script src="/scripts/services/appInterceptor_service.js"></script>
 		<script src="/scripts/services/progressInterceptor_service.js"></script>
+		<script src="/scripts/services/mgViewInterceptor_service.js"></script>
 		<!-- endbuild -->
 
 		<script>
-			angular.module('Magma')
+			angular.module('MagmaDemo')
 				{{#each constants}}
 				.constant('{{@key}}', {{{this}}})
 				{{/each}}

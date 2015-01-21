@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Magma')
+angular.module('MagmaDemo')
 	.controller('Header_controller', function($scope, $location, $routeParams){
 		$scope.models = {
 			q: $routeParams.q || ''

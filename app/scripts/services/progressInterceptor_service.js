@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Magma')
+angular.module('MagmaDemo')
 	.factory('progressInterceptor', function($rootScope, $timeout){
 
 		$rootScope.http = {
