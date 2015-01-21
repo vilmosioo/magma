@@ -20,14 +20,9 @@
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/">Magma</a>
 					</div>
-					<form class="navbar-form navbar-left" action="/search/" method="get" mg-submit="handlers.search()" ng-controller="Header_controller" name="SearchForm">
-						<input name="q" ng-model="models.q" type="text" class="form-control col-lg-8" placeholder="Search" required>
+					<form class="navbar-form navbar-right" action="/search/" method="get" mg-submit="handlers.search()" ng-controller="Header_controller" name="SearchForm" role="search">
+						<input name="q" ng-model="models.q" type="text" class="form-control" placeholder="Search" required>
 					</form>
-					<div>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/about/">About</a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</header>

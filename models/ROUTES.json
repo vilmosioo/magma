@@ -5,12 +5,6 @@
 		"model": "home",
 		"description": "A new way of building isomorphic apps."
 	},
-	"/about/": {
-		"templateUrl": "/views/about.html",
-		"model": "about",
-		"title": "About",
-		"description": "How to use views in Magma."
-	},
 	"/search/": {
 		"templateUrl": "/views/search.html",
 		"model": "search",
