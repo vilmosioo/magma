@@ -65,8 +65,13 @@
 		<script>
 			angular.module('Magma')
 				{{#each constants}}
-				.constant('{{@key}}', {{{this}}});
+				.constant('{{@key}}', {{{this}}})
 				{{/each}}
+				{{#if production}}
+				.config(['$compileProvider', function ($compileProvider) {
+					$compileProvider.debugInfoEnabled(false);
+				}]);
+				{{/if}}
 		</script>
 	</body>
 </html>

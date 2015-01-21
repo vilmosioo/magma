@@ -11,7 +11,8 @@ var _render = function(route, isTemplate){
 	var data = !isTemplate ? {
 		constants: {
 			ROUTES: JSON.stringify(routes)
-		}
+		},
+		production: process.env.NODE_ENV !== 'development'
 	} : {
 		layout: false
 	};

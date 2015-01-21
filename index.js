@@ -6,7 +6,6 @@ var express = require('express'),
 	path = require('path'),
 	exphbs  = require('express-handlebars'),
 	pck = require('./package.json'),
-	api = require('./routes/api'),
 	resources = require('./routes/static'),
 	root = require('./routes/root'),
 	dir = process.env.NODE_ENV === 'development' ? pck.config.app : pck.config.dist;
@@ -35,7 +34,6 @@ app.use(logger('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/api', api);
 app.use(resources);
 app.use(root);
 
