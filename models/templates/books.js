@@ -19,6 +19,12 @@ module.exports = function(args){
 					books: books
 				});
 			}, reject);
+		} else if(args.query.similar){
+			goodreads.similarBooks(querystring.escape(args.query.similar), args.query).then(function(books){
+				resolve({
+					books: books
+				});
+			}, reject);
 		} else {
 			resolve();
 		}

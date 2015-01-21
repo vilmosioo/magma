@@ -43,6 +43,36 @@ var _defaults = {
 };
 
 module.exports = {
+	similarBooks: function(id, options){
+		options = extend({}, _defaults, options);
+
+		if(!!id){
+			console.log('Request => ' + util.format(GET, id));
+			return request(util.format(GET, id), {
+				rejectUnauthorized: false
+			})
+				.then(function(response){
+					return parser(response);
+				}, function(err){
+					console.log(err);
+				})
+				.then(function(response){
+					return response.GoodreadsResponse.book[0];
+				})
+				.then(function(book){
+					return book.similar_books[0].book;
+				})
+				.then(function(books){
+					return books.slice(options.offset, options.limit).map(_formatBookLite);
+				});
+		} else {
+			return new Pr(function(resolve, reject){
+				reject({
+					error: 'ID must be specified'
+				});
+			});
+		}
+	},
 	booksByAuthor: function(id, options){
 		options = extend({}, _defaults, options);
 		if(!!id){

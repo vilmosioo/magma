@@ -18,4 +18,10 @@
 	{{/if}}
 
 	<p>{{{description}}}</p>
+
+	<div class="clearfix"></div>
+	<h4>Similar Books</h4>
+	<div class="similar-books clearfix include-animate-container">
+		<div ng-include="'/views/templates/books.html?similar={{id}}'" class="include-animate"></div>
+	</div>
 </div>
