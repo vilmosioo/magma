@@ -1,13 +1,21 @@
-<h3>{{title}}</h3>
+<div book mg-scope="{{json 'average_rating'}}">
+	<h3>{{title}}</h3>
 
-{{#if image}}
-	<img class="book_cover" src="{{image}}" alt="{{title}}">
-{{/if}}
-<h4 class="authors">{{#each authors}}<a href="/author/{{id}}">{{name}}</a>{{/each}}</h4>
+	{{#if image}}
+		<img class="book_cover" src="{{image}}" alt="{{title}}">
+	{{/if}}
+	<h4 class="authors">{{#each authors}}<a href="/author/{{id}}">{{name}}</a>{{/each}}</h4>
 
-{{#if publisher}}<p><strong>Publisher</strong> {{publisher}}</p>{{/if}}
-{{#if publicationDate}}<p><strong>Publication date</strong> {{publicationDate}}</p>{{/if}}
-{{#if num_pages}}<p><strong>Number of pages</strong> {{num_pages}}</p>{{/if}}
-{{#if average_rating}}<p><strong>Average rating</strong> {{average_rating}}</p>{{/if}}
+	{{#if publisher}}<p><strong>Publisher</strong> {{publisher}}</p>{{/if}}
+	{{#if publicationDate}}<p><strong>Publication date</strong> {{publicationDate}}</p>{{/if}}
+	{{#if num_pages}}<p><strong>Number of pages</strong> {{num_pages}}</p>{{/if}}
+	{{#if average_rating}}
+		<p>
+			<strong>Average rating</strong>
+			<rating ng-model="average_rating" class="average_rating" readonly="true">{{average_rating}}</rating>
+			<span class="label average_rating_label" ng-class="{'label-warning': average_rating<1.5, 'label-info': average_rating>=1.5 && average_rating<3.5, 'label-success': average_rating>=3.5}" ng-bind="average_rating"></span>
+		</p>
+	{{/if}}
 
-<p>{{{description}}}</p>
+	<p>{{{description}}}</p>
+</div>

@@ -83,6 +83,18 @@ section{
   min-height:440px;
 }
 
+.average_rating{
+  cursor: pointer;
+}
+
+.average_rating_label{
+  display:none;
+}
+
+.average_rating:hover + .average_rating_label{
+  display:inline-block;
+}
+
 .progress{
   position:absolute;
   top:0;
