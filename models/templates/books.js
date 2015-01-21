@@ -26,7 +26,7 @@ module.exports = function(args){
 				});
 			}, reject);
 		} else {
-			resolve();
+			reject('I don\'t know what books you\'re looking for');
 		}
 
 	});

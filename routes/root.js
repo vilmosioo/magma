@@ -44,6 +44,9 @@ var _render = function(route, isTemplate){
 			});
 
 			res.render(name, data);
+		}, function(err){
+			console.log(err);
+			res.send(500, '');
 		});
 	};
 };

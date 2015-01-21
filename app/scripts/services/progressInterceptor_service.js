@@ -33,6 +33,13 @@ angular.module('Magma')
 					$rootScope.http.loading = false;
 				}
 				return response;
+			},
+			responseError: function(response){
+				$rootScope.http.count--;
+				if(!$rootScope.http.count){
+					$rootScope.http.loading = false;
+				}
+				return response;
 			}
 		};
 	});

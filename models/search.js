@@ -22,12 +22,8 @@ module.exports = function(args){
 
 	extend(args.query, _defaults);
 
-	return new Pr(function(resolve){
-		books(args).then(function(view){
-			extend(data, view);
-		}).finally(function(){
-			resolve(data);
-		});
 
+	return books(args).then(function(view){
+		return extend(data, view);
 	});
 };

@@ -53,8 +53,6 @@ module.exports = {
 			})
 				.then(function(response){
 					return parser(response);
-				}, function(err){
-					console.log(err);
 				})
 				.then(function(response){
 					return response.GoodreadsResponse.book[0];
@@ -82,8 +80,6 @@ module.exports = {
 			})
 				.then(function(response){
 					return parser(response);
-				}, function(err){
-					console.log(err);
 				})
 				.then(function(response){
 					return response.GoodreadsResponse.author[0];
@@ -108,8 +104,6 @@ module.exports = {
 			})
 				.then(function(response){
 					return parser(response);
-				}, function(err){
-					console.log(err);
 				})
 				.then(function(response){
 					return response.GoodreadsResponse.author[0];
@@ -140,8 +134,6 @@ module.exports = {
 				})
 				.then(function(response){
 					return parser(response);
-				}, function(err){
-					console.log(err);
 				})
 				.then(function(response){
 					return response.GoodreadsResponse.book[0];
@@ -164,11 +156,6 @@ module.exports = {
 			})
 				.then(function(response){
 					return parser(response);
-				}, function(err){
-					console.log(err);
-					return {
-						items: []
-					};
 				})
 				.then(function(response){
 					var search = response.GoodreadsResponse.search[0];

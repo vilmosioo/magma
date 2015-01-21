@@ -14,18 +14,14 @@ module.exports = function(args){
 		}
 	};
 
-	return new Pr(function(resolve){
-		goodreads.author(args.params.id || args.query.id).then(function(author){
-			data = author;
+	return goodreads.author(args.params.id || args.query.id).then(function(author){
+		data = author;
 
-			// override route metadata
-			data.app = {
-				title: util.format(route.title, author.name)
-			};
-		}, function(err){
-			console.log(err);
-		}).finally(function(){
-				resolve(data);
-			});
+		// override route metadata
+		data.app = {
+			title: util.format(route.title, author.name)
+		};
+
+		return data;
 	});
 };
