@@ -2,6 +2,7 @@
 
 module.exports = {
 	options:{
-		banner: 'Magma - <%= pck.version %>'
+		 banner: '/*! <%= pck.name %> - v<%= pck.version %> - ' +
+        '<%= grunt.template.today("yyyy-mm-dd") %> */'
 	}
 };
