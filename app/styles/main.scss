@@ -34,24 +34,26 @@ section{
   }
 }
 
-.book{
-  height:200px;
-  text-align: center;
-  margin-bottom:20px;
-  line-height: 200px;
-  @media screen and (max-width: 768px) {
-    height:400px;
-    line-height: 400px;
-  }
-  @media screen and (max-width: 625px) {
-    height:300px;
-    line-height: 300px;
-  }
-  img{
-    vertical-align: bottom;
-    max-width:100%;
-    max-height:100%;
-    bordeR:1px solid black;
+.grid{
+  .book{
+    height:200px;
+    text-align: center;
+    margin-bottom:20px;
+    line-height: 200px;
+    @media screen and (max-width: 768px) {
+      height:400px;
+      line-height: 400px;
+    }
+    @media screen and (max-width: 625px) {
+      height:300px;
+      line-height: 300px;
+    }
+    img{
+      vertical-align: bottom;
+      max-width:100%;
+      max-height:100%;
+      bordeR:1px solid black;
+    }
   }
 }
 
