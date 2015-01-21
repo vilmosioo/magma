@@ -2,8 +2,7 @@
 
 var goodreads = require('../services/goodreads'),
 	util = require('util'),
-	route = require('./ROUTES.json')['/author/:id'],
-	Pr = require('bluebird');
+	route = require('./ROUTES.json')['/author/:id'];
 
 module.exports = function(args){
 

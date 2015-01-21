@@ -8,6 +8,7 @@ var express = require('express'),
 	pck = require('./package.json'),
 	resources = require('./routes/static'),
 	root = require('./routes/root'),
+	notFound = require('./models/404'),
 	dir = process.env.NODE_ENV === 'development' ? pck.config.app : pck.config.dist;
 
 var app = express(),
@@ -36,6 +37,11 @@ app.use(bodyParser.json());
 
 app.use(resources);
 app.use(root);
+app.use(function(req, res){
+	notFound().then(function(data){
+		res.render('404', data);
+	});
+});
 
 var server = app.listen(process.env.OPENSHIFT_NODEJS_PORT || pck.config.port, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', function(){
     console.log('Server listening on ' + server.address().address + ':' + server.address().port);

@@ -69,6 +69,15 @@ section{
   min-height:880px;
 }
 
+.notfound{
+  text-align: center;
+  img{
+    width:600px;
+    max-width:100%;
+    margin:40px auto;
+  }
+}
+
 .book, .author{
   .book_cover{
     float:left;

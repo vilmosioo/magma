@@ -20,7 +20,8 @@ module.exports = function (grunt) {
 		filerev: require('./grunt/filerev'),
 		sass: require('./grunt/sass'),
 		ngAnnotate: require('./grunt/ngAnnotate'),
-		jshint: require('./grunt/jshint')
+		jshint: require('./grunt/jshint'),
+		imagemin: require('./grunt/imagemin')
 	});
 
 	grunt.registerTask('test', [
@@ -45,6 +46,7 @@ module.exports = function (grunt) {
 		'cssmin',
 		'filerev',
 		'copy',
+		'imagemin',
 		'usemin'
 	]);
 

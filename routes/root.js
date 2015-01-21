@@ -5,6 +5,7 @@ var express= require('express'),
 	routes = require('../models/ROUTES.json'),
 	Pr = require('bluebird'),
 	extend = require('extend'),
+	notFound = require('../models/404'),
 	router = express.Router();
 
 var _render = function(route, isTemplate){
@@ -46,7 +47,13 @@ var _render = function(route, isTemplate){
 			res.render(name, data);
 		}, function(err){
 			console.log(err);
-			res.send(500, '');
+			if(err.statusCode === 404){
+				notFound().then(function(data){
+					res.render('404', data);
+				});
+			} else {
+				res.send(500, '');
+			}
 		});
 	};
 };

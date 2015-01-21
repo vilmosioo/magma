@@ -15,7 +15,7 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
 
 		$routeProvider
 			.otherwise({
-				redirectTo: '/'
+				templateUrl: '/views/404.html'
 			});
 
 		$httpProvider.interceptors.push('mgViewInterceptor');

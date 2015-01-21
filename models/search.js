@@ -3,8 +3,7 @@
 var route = require('./ROUTES.json')['/search/'],
 	books = require('./templates/books'),
 	extend = require('extend'),
-	util = require('util'),
-	Pr = require('bluebird');
+	util = require('util');
 
 module.exports = function(args){
 
