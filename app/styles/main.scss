@@ -88,57 +88,82 @@ section{
   top:0;
   left:0;
   right:0;
-  height:2px;
-}
-.progress-bar{
-  -webkit-transition-duration:10s;
-  transition-duration:10s;
+  height:5px;
+  .progress-bar{
+    -webkit-transition-duration:5s;
+    transition-duration:5s;
+  }
+  &.ng-enter, &.ng-leave {
+    -webkit-transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+
+    opacity:1;
+  }
+
+  &.ng-leave.ng-leave-active, &.ng-enter {
+    opacity:0;
+  }
+
+  &.ng-leave.ng-leave-active {
+    .progress-bar{
+      -webkit-transition:none;
+      transition:none;
+    }
+  }
+
+  &.ng-enter.ng-enter-active {
+    opacity:1
+  }
 }
 
 .view-animate-container {
   position:relative;
 }
 
-.view-animate.ng-enter, .view-animate.ng-leave {
-  -webkit-transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-  transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+.view-animate{
+  &.ng-enter, &.ng-leave {
+    -webkit-transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 
-  opacity:1;
-  position:absolute;
-  top:0;
-  left:15px; // set from bootstrap
-  right:15px;
-  bottom:0;
-}
+    opacity:1;
+    position:absolute;
+    top:0;
+    left:15px; // set from bootstrap
+    right:15px;
+    bottom:0;
+  }
 
-.view-animate.ng-leave.ng-leave-active, .view-animate.ng-enter {
-  opacity:0;
-}
+  &.ng-leave.ng-leave-active, &.ng-enter {
+    opacity:0;
+  }
 
-.view-animate.ng-enter.ng-enter-active {
-  opacity:1
+  &.ng-enter.ng-enter-active {
+    opacity:1
+  }
 }
 
 .include-animate-container {
   position:relative;
 }
 
-.include-animate.ng-enter, .include-animate.ng-leave {
-  -webkit-transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-  transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+.include-animate{
+  &.ng-enter, &.ng-leave {
+    -webkit-transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+    transition:opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 
-  opacity:1;
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-}
+    opacity:1;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  }
 
-.include-animate.ng-leave.ng-leave-active, .include-animate.ng-enter {
-  opacity:0;
-}
+  &.ng-leave.ng-leave-active, &.ng-enter {
+    opacity:0;
+  }
 
-.include-animate.ng-enter.ng-enter-active {
-  opacity:1
+  &.ng-enter.ng-enter-active {
+    opacity:1
+  }
 }
