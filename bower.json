@@ -1,7 +1,8 @@
 {
   "name": "Magma",
   "private": true,
-  "dependencies": {
+	"version": "0.0.45",
+	"dependencies": {
     "angular": "~1.3.8",
     "angular-bootstrap": "~0.12.0",
     "angular-route": "~1.3.8",

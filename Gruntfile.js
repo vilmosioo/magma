@@ -21,7 +21,8 @@ module.exports = function (grunt) {
 		sass: require('./grunt/sass'),
 		ngAnnotate: require('./grunt/ngAnnotate'),
 		jshint: require('./grunt/jshint'),
-		imagemin: require('./grunt/imagemin')
+		imagemin: require('./grunt/imagemin'),
+		bump: require('./grunt/bump')
 	});
 
 	grunt.registerTask('test', [

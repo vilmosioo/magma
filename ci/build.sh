@@ -9,13 +9,12 @@ git config remote.origin.url https://github.com/vilmosioo/magma.git
 echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
 
 echo 'Patching version...'
-npm version patch -m "Updating version [skip ci]" || { echo 'Version patch failed' ; exit 1; }
+grunt bump-only:patch
 
 echo 'Running build command'
 grunt -v || { echo 'Client build failed' ; exit 1; }
 
 echo 'Pushing git data to repo...'
-git push origin master || { echo 'Git push failed.' ; exit 1; }
-git push origin master --tags || { echo 'Git tagging failed.' ; exit 1; }
+grunt bump-commit
 
 exit 0;
