@@ -19,6 +19,7 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
 			});
 
 		$httpProvider.interceptors.push('mgViewInterceptor');
+		$httpProvider.interceptors.push('progressInterceptor');
 	})
 	.run(function($route, $rootScope, $window){
 		var enabled = false;
