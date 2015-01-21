@@ -8,7 +8,7 @@ angular.module('Magma')
 			priority: 1000, // We set our custom directive's priority to a high number to ensure that it will be compiled first and with terminal: true, the other directives will be skipped after this directive is compiled.
 			link: function(scope, el){
 				var enabled;
-				var unbind = scope.$on('$routeChangeSuccess', function(ev, currRoute){
+				var unbind = scope.$on('$routeChangeSuccess', function(){
 					if(enabled){
 						var view = el.clone().empty();
 						view.removeAttr('mg-view');

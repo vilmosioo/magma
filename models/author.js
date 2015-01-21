@@ -1,6 +1,8 @@
 'use strict';
 
 var goodreads = require('../services/goodreads'),
+	util = require('util'),
+	route = require('./ROUTES.json')['/author/:id'],
 	Pr = require('bluebird');
 
 module.exports = function(args){
@@ -18,7 +20,7 @@ module.exports = function(args){
 
 			// override route metadata
 			data.app = {
-				title: author.name
+				title: util.format(route.title, author.name)
 			};
 		}, function(err){
 			console.log(err);

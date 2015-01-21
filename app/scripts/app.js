@@ -20,19 +20,13 @@ angular.module('Magma', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
 
 		$httpProvider.interceptors.push('mgViewInterceptor');
 		$httpProvider.interceptors.push('progressInterceptor');
+		$httpProvider.interceptors.push('appInterceptor');
 	})
 	.run(function($route, $rootScope, $window){
-		var enabled = false;
-
 		$rootScope.app = {
 			title: '',
 			description: ''
 		};
-
-		$rootScope.$on('$routeChangeStart', function(ev, currRoute){
-			$rootScope.app.title = currRoute.$$route.title || '';
-			$rootScope.app.description = currRoute.$$route.description || '';
-		});
 
 		$rootScope.$on('$routeChangeSuccess', function(){
 			$window.scrollTo(0, 0);

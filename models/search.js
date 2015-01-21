@@ -12,7 +12,8 @@ module.exports = function(args){
 		title: util.format(route.title, args.query.q),
 		books: [],
 		app: {
-			title: util.format(route.title, args.query.q)
+			title: util.format(route.title, args.query.q),
+			description: util.format(route.title, args.query.q)
 		}
 	}, _defaults = {
 		offset: 0,

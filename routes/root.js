@@ -11,14 +11,17 @@ var _render = function(route, isTemplate){
 	var data = !isTemplate ? {
 		constants: {
 			ROUTES: JSON.stringify(routes)
-		},
-		app: {
-			title: route.title,
-			description: route.description
 		}
 	} : {
 		layout: false
 	};
+
+	if(route){
+		data.app = {
+			title: route.title,
+			description: route.description
+		};
+	}
 
 	return function(req, res){
 		var name = !route ? path.join(req.params.path || '', req.params.filename) : path.basename(route.templateUrl, path.extname(route.templateUrl)), model;
@@ -34,6 +37,10 @@ var _render = function(route, isTemplate){
 
 		model({query: req.query || {}, params: req.params || {}}).then(function(view){
 			data = extend(data, view);
+
+			Object.keys(data.app || {}).forEach(function(key){
+				res.set('x-app-' + key, data.app[key]);
+			});
 
 			res.render(name, data);
 		});

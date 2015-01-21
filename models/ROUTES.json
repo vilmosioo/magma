@@ -20,10 +20,14 @@
 	},
 	"/book/:id": {
 		"templateUrl": "/views/book.html",
-		"model": "book"
+		"model": "book",
+		"title": "%s",
+		"description": "%s"
 	},
 	"/author/:id": {
 		"templateUrl": "/views/author.html",
-		"model": "author"
+		"model": "author",
+		"title": "%s",
+		"description": "%s"
 	}
 }
