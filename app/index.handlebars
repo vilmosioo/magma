@@ -36,8 +36,8 @@
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/">Magma</a>
 					</div>
-					<form class="navbar-form navbar-right" action="/search/" method="get" ng-controller="Header_controller" name="SearchForm" role="search">
-						<input name="q" ng-model="models.q" type="text" class="form-control" placeholder="Search" required mg-submit="handlers.search()">
+					<form class="navbar-form navbar-right" action="/search/" method="get" ng-controller="Header_controller" mg-submit="handlers.search()" name="SearchForm" role="search">
+						<input name="q" ng-model="models.q" type="text" class="form-control" placeholder="Search" required>
 					</form>
 				</div>
 			</div>
