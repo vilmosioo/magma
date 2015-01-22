@@ -56,13 +56,19 @@ TLDR Magma is an architecture that requires the main content to be delivered by 
 [grunt tasks]
 [screenshot of js and no-js preview]
 
-## What's done
+## What's done (demo)
 
-TODO
+ * Search books
+ * Paginate search results
+ * View individual book
+ * View similar books
+ * View author details
 
-## What's next
+## What's next (demo)
 
-TODO
+ * Sign-in with Goodreads
+ * View your collection
+ * Enable grid and list view
 
 ## Contributing
 
