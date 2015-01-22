@@ -34,7 +34,8 @@
     "bluebird": "2.7.0",
     "request-promise": "^0.3.2",
     "xml2js": "^0.4.4",
-    "extend": "^2.0.0"
+    "extend": "^2.0.0",
+    "marked": "^0.3.2"
   },
   "devDependencies": {
     "connect-livereload": "0.5.2",
