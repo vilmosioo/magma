@@ -52,7 +52,7 @@ var _render = function(route, isTemplate){
 					res.render('404', data);
 				});
 			} else {
-				res.send(500, '');
+				res.status(500).send('');
 			}
 		});
 	};

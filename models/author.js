@@ -18,7 +18,9 @@ module.exports = function(args){
 
 		// override route metadata
 		data.app = {
-			title: util.format(route.title, author.name)
+			title: util.format(route.title, author.name),
+			description: author.about.replace(/(<([^>]+)>)/ig,"").substring(0, 200),
+			image: author.image
 		};
 
 		return data;
