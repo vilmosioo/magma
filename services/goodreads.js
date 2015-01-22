@@ -29,7 +29,6 @@ var _formatBook = function(book){
 };
 
 var _formatBookLite = function(item){
-	console.log(item);
 	return {
 		id: item.id[0]._ || item.id[0],
 		title: item.title[0],
