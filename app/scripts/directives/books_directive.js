@@ -16,10 +16,10 @@ angular.module('MagmaDemo')
 						// todo make this search agnostic
 						if(page === 1){
 							$location.search({q: params.q});
-							$scope.templates.books = '/views/templates/books.html?q=' + params.q;	
+							$scope.templates.books = '/views/templates/books.html?limit=999&q=' + params.q;
 						}	else {
 							$location.search(angular.extend(params, {page: page}));
-							$scope.templates.books = '/views/templates/books.html?q=' + params.q + '&page=' + page;							
+							$scope.templates.books = '/views/templates/books.html?limit=999&q=' + params.q + '&page=' + page;
 						}
 						
 					}
