@@ -17,7 +17,8 @@ module.exports = function(args){
 		// override route metadata
 		data.app = {
 			title: book.title,
-			description: book.description
+			description: book.description.replace(/(<([^>]+)>)/ig,"").substring(0, 200),
+			image: book.image
 		};
 		return data;
 	});

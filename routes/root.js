@@ -40,6 +40,10 @@ var _render = function(route, isTemplate){
 		model({query: req.query || {}, params: req.params || {}}).then(function(view){
 			data = extend(data, view);
 
+			if(route){
+				data.app.url = req.protocol + '://' + req.get('host') + req.originalUrl;
+			}
+
 			Object.keys(data.app || {}).forEach(function(key){
 				res.set('x-app-' + key, data.app[key]);
 			});
