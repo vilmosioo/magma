@@ -50,13 +50,50 @@ Your website
 
 TLDR Magma is an architecture that requires the main content to be delivered by the server on page load, and initialising a single page app as soon as JS is loaded.
 
-## Getting started
+## Magma AngularJS module
 
-[clone and install]
-[grunt tasks]
-[screenshot of js and no-js preview]
+```
+npm install magma --save
+```
 
-## What's done (demo)
+```
+bower install magma --save
+```
+
+### mgView
+
+mgView directive allows you to delay route initialisation in your angular application. On `$routechangeSuccess` mgView will replace itself with the standard ngView and the application will behave as a regular SPA.
+
+```
+&lt;div mg-view&gt;
+	Server side content that will only get updated after the first $onRouteChangeSuccess event
+&lt;/div&gt;
+```
+
+### mgSubmit
+
+To allow your forms to work before JS is loaded (or if a grievous error happened during bootstrap) you should include method and action attributes to it. This allows standard form functionality to work. As soon as angular is ready, mgSubmit will replace itself with the standard ngSubmit.
+
+```
+&lt;form action='URL' method='GET' mg-submit='onSubmit()'&gt;
+	&lt;input type='text' name='model' ng-model='model'&gt;
+	...
+&lt;/form&gt;
+```
+
+### mgInclude & mgBind
+
+The problem with ngInclude and ngBind is that they will replace your content immediately after bootstrap, even if data is already exist. mgInclude and mgBind allows you to display persistent server side content, until client side templateing is necessary.
+
+```
+&lt;div mg-include='template'&gt;
+	Server side content that will be replaced only when template is defined to a truthy value.
+&lt;/div&gt;
+```
+
+## Demo roadmap
+
+### What's done
 
  * Search books
  * Paginate search results
@@ -64,7 +101,7 @@ TLDR Magma is an architecture that requires the main content to be delivered by 
  * View similar books
  * View author details
 
-## What's next (demo)
+### What's next
 
  * Sign-in with Goodreads
  * View your collection
