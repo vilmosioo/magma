@@ -25,6 +25,7 @@ module.exports =  {
 			livereload: true
 		},
 		files: [
+			'README.md',
 			'<%= pck.config.app %>/**/*.{handlebars,html,js}',
 			'<%= pck.config.tmp %> %>/styles/**/*.css',
 			'<%= pck.config.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
