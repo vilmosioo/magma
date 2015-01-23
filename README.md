@@ -12,21 +12,17 @@ A web-app that allows you to browse books and authors.
 
 Let's assume our website's wireframe looks like this.
 
-![Magma](docs/Magma.png)
+![Magma](docs/index.png)
 
-Traditional websites are based on server-side rendering. 
-
-[graph ]
-
-A user makes a request, the server identifies the resources requested, builds the document and sends it back. 
+Traditional websites are based on server-side rendering. A user makes a request, the server identifies the resources requested, builds the document and sends it back.
 
 More complex websites have multiple sources to generate the data. A modular architecture allows you to aggregate different components before sending the final document to the user.
 
-[graph]
+![Magma](docs/server.png)
 
 Client-side architecture works in a similar way, except the templating engine is the browser itself. 
 
-[graph]
+![Magma](docs/client.png)
 
 Client vs server templating is an on-going debate today. 
 
@@ -50,7 +46,7 @@ The Magma architecture recommends you expose the components to their own endpoin
 
 Your website 
 
-[graph magma]
+![Magma](docs/magma.png)
 
 TLDR Magma is an architecture that requires the main content to be delivered by the server on page load, and initialising a single page app as soon as JS is loaded.
 
