@@ -10,45 +10,32 @@ A web-app that allows you to browse books and authors.
 
 ## Context
 
-Let's assume our website's wireframe looks like this.
+Complex websites have multiple sources to generate the data. A modular architecture allows you to aggregate different components before sending the final document to the user. Let's assume our website's wireframe looks like this. A, B, C, D are separate components built to display various data.
 
 ![Magma](docs/index.png)
 
-Traditional websites are based on server-side rendering. A user makes a request, the server identifies the resources requested, builds the document and sends it back.
-
-More complex websites have multiple sources to generate the data. A modular architecture allows you to aggregate different components before sending the final document to the user.
+Server-side rendering is the common approach to deliver a document. A user makes a request, the server identifies the resources requested, builds the document and sends it back.
 
 ![Magma](docs/server.png)
 
-Client-side architecture works in a similar way, except the templating engine is the browser itself. 
+Client-side architecture works in a similar way, except the templating engine is the browser itself. The components are built by JavaScript.
 
 ![Magma](docs/client.png)
 
-Client vs server templating is an on-going debate today. 
-
-[table pro cons]
-
-Magma suggests a hybrid approach, taking the advantages of both and disadvantages of neither.
+Client vs server templating is an on-going debate today. Magma suggests a hybrid approach, taking the advantages of both and disadvantages of neither.
 
 ## How it works
 
 Magma is not a framework. You don't need any code from this repository. it does not require you to use a particular tech stack.
 
-it is an architecture. It leverages the main content to the server for fast delivery, while everything else is rendered on the client. 
+It is an architecture. It leverages the main content to the server for fast delivery, while everything else is rendered on the client.
 
-For example, say your index.html server a page containing 4 components: A, B, C, D.
-
-[psedocode index a b]
-
-The Magma architecture recommends you expose the components to their own endpoints.
-
-[pseudocode index() a() b()]
-
-Your website 
+For example, referencing the wireframe above, your home page contains 4 components: A, B, C, D. On page load, the server will render A and B and send the document to the client. At this point the website is viewable and useful to the user. Once your JavaScript loads, components C and D are loaded using a client rendering engine. After this point the website behaves as a single page application. If you need to render A and B on the client later on, you may call their individual endpoints.
+// example code from demo
 
 ![Magma](docs/magma.png)
 
-TLDR Magma is an architecture that requires the main content to be delivered by the server on page load, and initialising a single page app as soon as JS is loaded.
+**TLDR** Magma is an architecture that requires the main content to be delivered by the server on page load, and initialising a single page app as soon as JS is loaded. Components should be exposed by individual endpoints.
 
 ## Magma AngularJS module
 
