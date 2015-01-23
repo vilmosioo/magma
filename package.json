@@ -15,6 +15,7 @@
     "app": "app",
     "dist": "dist",
     "tmp": ".tmp",
+		"docs": "docs",
     "port": 9000
   },
   "homepage": "http://magma-vilmosioo.rhcloud.com/",

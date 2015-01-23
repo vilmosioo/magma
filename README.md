@@ -10,6 +10,10 @@ A web-app that allows you to browse books and authors.
 
 ## Context
 
+Let's assume our website's wireframe looks like this.
+
+![Magma](docs/Magma.png)
+
 Traditional websites are based on server-side rendering. 
 
 [graph ]
@@ -91,21 +95,43 @@ The problem with ngInclude and ngBind is that they will replace your content imm
 &lt;/div&gt;
 ```
 
+### mgScope
+
+mgScope is a very simple directive that allows you to extend an element's scope using a stringified object.
+
+```
+&lt;div mg-scope='{numberOfResults: 10}'&gt;&lt;/div&gt;
+```
+
+In the example above, the element's scope will have a new property called numberOfResults that equals 10.
+
+## Developers
+
+To run the demo, first install it on your computer.
+
+```
+git clone https://github.com/vilmosioo/magma.git
+cd magma
+npm install && bower install
+```
+
+The following grunt tasks are made available
+
+ * `grunt server` - Fires an express instance on port 9000 on your local machine, in development mode (CSS/JS is not minified, view caching disabled, angular debug mode is true).
+ * `grunt dist` - Fires an express instance on port 9000 on your local machine, in production mode (CSS/JS is minified, view caching enabled, angular debug mode is false)
+ * `grunt build` - Generates the artefacts.
+ * `grunt test` - Runs the tests
+
 ## Demo roadmap
 
-### What's done
-
- * Search books
- * Paginate search results
- * View individual book
- * View similar books
- * View author details
-
-### What's next
-
- * Sign-in with Goodreads
- * View your collection
- * Enable grid and list view
+ - [x] Search books
+ - [x] Paginate search results
+ - [x] View individual book
+ - [x] View similar books
+ - [x] View author details
+ - [ ] Sign-in with Goodreads
+ - [ ] View your collection
+ - [ ] Enable grid and list view
 
 ## Contributing
 
