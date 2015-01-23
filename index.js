@@ -9,7 +9,7 @@ var express = require('express'),
 	resources = require('./routes/static'),
 	root = require('./routes/root'),
 	notFound = require('./models/404'),
-	md = require('github-flavored-markdown'),
+	md = require('markdown').markdown,
 	fs = require('fs'),
 	dir = process.env.NODE_ENV === 'development' ? pck.config.app : pck.config.dist;
 
@@ -28,7 +28,7 @@ var app = express(),
 				return JSON.stringify(data);
 			},
 			md: function(file){
-				return md.parse(fs.readFileSync(file, { encoding: 'utf8' }));
+				return md.toHTML(fs.readFileSync(file, { encoding: 'utf8' }));
 			}
 		}
 	});
