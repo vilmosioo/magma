@@ -52,9 +52,9 @@ bower install magma --save
 mgView directive allows you to delay route initialisation in your angular application. On `$routechangeSuccess` mgView will replace itself with the standard ngView and the application will behave as a regular SPA.
 
 ```
-&lt;div mg-view&gt;
+<div mg-view>
 	Server side content that will only get updated after the first $onRouteChangeSuccess event
-&lt;/div&gt;
+</div>
 ```
 
 ### mgSubmit
@@ -62,10 +62,10 @@ mgView directive allows you to delay route initialisation in your angular applic
 To allow your forms to work before JS is loaded (or if a grievous error happened during bootstrap) you should include method and action attributes to it. This allows standard form functionality to work. As soon as angular is ready, mgSubmit will replace itself with the standard ngSubmit.
 
 ```
-&lt;form action='URL' method='GET' mg-submit='onSubmit()'&gt;
-	&lt;input type='text' name='model' ng-model='model'&gt;
+<form action='URL' method='GET' mg-submit='onSubmit()'>
+	<input type='text' name='model' ng-model='model'>
 	...
-&lt;/form&gt;
+</form>
 ```
 
 ### mgInclude & mgBind
@@ -73,9 +73,9 @@ To allow your forms to work before JS is loaded (or if a grievous error happened
 The problem with ngInclude and ngBind is that they will replace your content immediately after bootstrap, even if data is already exist. mgInclude and mgBind allows you to display persistent server side content, until client side templateing is necessary.
 
 ```
-&lt;div mg-include='template'&gt;
+<div mg-include='template'>
 	Server side content that will be replaced only when template is defined to a truthy value.
-&lt;/div&gt;
+</div>
 ```
 
 ### mgScope
@@ -83,7 +83,7 @@ The problem with ngInclude and ngBind is that they will replace your content imm
 mgScope is a very simple directive that allows you to extend an element's scope using a stringified object.
 
 ```
-&lt;div mg-scope='{numberOfResults: 10}'&gt;&lt;/div&gt;
+<div mg-scope='{numberOfResults: 10}'></div>
 ```
 
 In the example above, the element's scope will have a new property called numberOfResults that equals 10.
