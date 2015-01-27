@@ -23,11 +23,13 @@ module.exports = function (grunt) {
 		jshint: require('./grunt/jshint'),
 		imagemin: require('./grunt/imagemin'),
 		bump: require('./grunt/bump'),
-		uglify: require('./grunt/uglify')
+		uglify: require('./grunt/uglify'),
+		karma: require('./grunt/karma')
 	});
 
 	grunt.registerTask('test', [
-		'jshint'
+		'jshint',
+		'karma'
 	]);
 
 	grunt.registerTask('server', [

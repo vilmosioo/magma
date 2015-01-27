@@ -89,6 +89,12 @@
 		"console": true,
 		"require": true,
 		"module": true,
-		"angular": true
+		"angular": true,
+		"describe": true,
+		"expect": true,
+		"it": true,
+		"inject": true,
+		"beforeEach": true,
+		"afterEach": true
 	}        // additional predefined global variables
 }
