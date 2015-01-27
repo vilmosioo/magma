@@ -95,6 +95,7 @@
 		"it": true,
 		"inject": true,
 		"beforeEach": true,
-		"afterEach": true
+		"afterEach": true,
+		"spyOn": true
 	}        // additional predefined global variables
 }
