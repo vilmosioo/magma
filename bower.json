@@ -2,21 +2,18 @@
   "name": "Magma",
   "version": "0.0.56",
 	"keywords": ["architecture", "client", "server"],
-  "dependencies": {
-    "angular": "~1.3.8",
-    "angular-bootstrap": "~0.12.0",
-    "angular-route": "~1.3.8",
-    "bootswatch": "~3.3.*",
-    "angular-animate": "~1.3.8",
-    "github-markdown-css": "~2.0.2"
-  },
-	"ignore": {
-
-	},
-  "resolutions": {
-    "angular": "~1.3.8"
-  },
+  "ignore": ["app", "ci", "docs", "grunt", "Gruntfile.js", ".travis.yml", ".openshift", "models", "routes", "index.js", "karma.conf.js", ".jshintrc", ".bowerrc", "services", "test"],
+	"main": ["magma.min.js"],
   "devDependencies": {
-    "angular-mocks": "~1.3.11"
-  }
+    "angular-mocks": "~1.3.11",
+		"angular": "~1.3.11",
+		"angular-bootstrap": "~0.12.0",
+		"angular-route": "~1.3.11",
+		"bootswatch": "~3.3.*",
+		"angular-animate": "~1.3.11",
+		"github-markdown-css": "~2.0.2"
+  },
+	"resolutions": {
+		"angular": "~1.3.11"
+	}
 }
