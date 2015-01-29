@@ -1,6 +1,6 @@
 {
   "name": "Magma",
-  "version": "0.0.55",
+  "version": "0.0.56",
 	"keywords": ["architecture", "client", "server"],
   "dependencies": {
     "angular": "~1.3.8",
