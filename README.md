@@ -33,7 +33,7 @@ It is an architecture. It leverages the main content to the server for fast deli
 For example, referencing the wireframe above, your home page contains 4 components: A, B, C, D. On page load, the server will render A and B and send the document to the client. At this point the website is viewable and useful to the user. Once your JavaScript loads, components C and D are loaded using a client rendering engine. After this point the website behaves as a single page application. If you need to render A and B on the client later on, you may call their individual endpoints.
 // example code from demo
 
-![Magma](docs/magma.png)
+![Magma](docs/architecture.png)
 
 **TLDR** Magma is an architecture that requires the main content to be delivered by the server on page load, and initialising a single page app as soon as JS is loaded. Components should be exposed by individual endpoints.
 
