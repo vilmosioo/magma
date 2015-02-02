@@ -1,6 +1,6 @@
 {
   "name": "Magma",
-  "version": "0.0.57",
+  "version": "0.0.58",
 	"keywords": ["architecture", "client", "server"],
   "ignore": ["app", "ci", "docs", "grunt", "Gruntfile.js", ".travis.yml", ".openshift", "models", "routes", "index.js", "karma.conf.js", ".jshintrc", ".bowerrc", "services", "test"],
 	"main": ["magma.min.js"],
